@@ -26,7 +26,7 @@ public class TrainingCenter extends BuildingElement {
             System.out.println("Welcome to " + centerName + ".  The training center is a place where you have an opportunity to train in order to level up your armour." +
                     "\nBe aware, the training center only allows you to work on a piece of armour every 30 miles you travel, so choose wisely." +
                     "\nWhat piece of equipment would you like to work on?");
-            gear.gearInfo(0);
+            gear.gearInfo();
             System.out.println("\nInput:");
             for (int t = 0; t <= trainGear.length - 1; t++) {
                 System.out.println(trainGear[t]);

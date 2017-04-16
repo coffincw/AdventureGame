@@ -30,11 +30,8 @@ public class Gearset extends Player {
     int weaponUpValue[] = {0, 0, 0, 0}; // level of weapon
     int weaponExp[] = {0, 0, 0, 0}; // exp held by weapon
 
-    String gearInfo(int i) {
+    String gearInfo() {
         String gear = "";
-        if (i > 0) {
-            gear = "Gear Info: \n------";
-        }
 
         for (int g = 0; g <= armour.length - 2; g++) {
             gear += "\n" + armourUpgrade[armourUpValue[g]] + " " + armour[g];

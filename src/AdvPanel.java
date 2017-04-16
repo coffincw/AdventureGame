@@ -22,6 +22,16 @@ public class AdvPanel extends JPanel {
         panel.setBorder(title);
     }
 
+    protected static ImageIcon createImageIcon(String path) {
+        java.net.URL imgURL = AdvWindow.class.getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Couldn't find file: " + path);
+            return null;
+        }
+    }
+
     public void drawRandomCircle() {
         int width = getWidth();
         int height = getHeight();

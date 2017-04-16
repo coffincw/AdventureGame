@@ -57,9 +57,9 @@ public class TitleScreen extends AdvWindow implements ActionListener {
             titlePanel.setVisible(false);
             GameplayWindow game = new GameplayWindow();
         } else if (e.getSource() == buttonTitle[1]) {
-            JOptionPane.showMessageDialog(null, gameInstruct());
+            JOptionPane.showMessageDialog(null, gameInstruct(), "Instructions", JOptionPane.QUESTION_MESSAGE);
         } else if (e.getSource() == buttonTitle[2]) {
-            JOptionPane.showMessageDialog(null, About());
+            JOptionPane.showMessageDialog(null, About(), "About", JOptionPane.INFORMATION_MESSAGE);
         } else if (e.getSource() == buttonTitle[3]) {
             mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
 
@@ -78,8 +78,7 @@ public class TitleScreen extends AdvWindow implements ActionListener {
     }
 
     String About() {
-        return "About:" +
-                "\nWelcome to Carthage, an adventure game which" +
+        return "Welcome to Carthage, an adventure game which" +
                 "\nlets you explore different cities and areas while" +
                 "\nleveling up your gear and fighting monsters!";
     }

@@ -1,11 +1,7 @@
-import javax.sound.sampled.Line;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
 
 /**
  * Created by caleb on 4/15/17.
@@ -16,11 +12,13 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     AdvPanel options = new AdvPanel();
     AdvPanel otherOptions = new AdvPanel();
     Player p = new Player();
+    ImageIcon mapIcon = options.createImageIcon("Thumbtack.png");
+    ImageIcon gearIcon = options.createImageIcon("gear.png");
+    ImageIcon statsIcon = options.createImageIcon("stats.png");
 
     private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
 
     public GameplayWindow() {
-        System.out.println("1");
 
         mainFrame.getContentPane().removeAll();
 
@@ -48,6 +46,7 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     }
 
 
+
     void components() {
         GridLayout grid = new GridLayout(8, 8);
         options.setLayout(grid);
@@ -72,13 +71,13 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == optionButtons[0]) {
-            JOptionPane.showMessageDialog(null, p.Stats());
+            JOptionPane.showMessageDialog(null, p.Stats(), "Stats", JOptionPane.INFORMATION_MESSAGE, statsIcon);
         } else if (e.getSource() == optionButtons[1]) {
-            JOptionPane.showMessageDialog(null, p.gear.gearInfo(1));
+            JOptionPane.showMessageDialog(null, p.gear.gearInfo(), "Gear", JOptionPane.INFORMATION_MESSAGE, gearIcon);
         } else if (e.getSource() == optionButtons[2]) {
-            JOptionPane.showMessageDialog(null, map());
+            JOptionPane.showMessageDialog(null, map(), "Map", JOptionPane.INFORMATION_MESSAGE, mapIcon);
         } else if (e.getSource() == optionButtons[3]) {
-            //JOptionPane.showMessageDialog(null, gameInstruct());
+            InventoryWindow backpack = new InventoryWindow();
         } else if (e.getSource() == optionButtons[4]) {
 
         } else if (e.getSource() == optionButtons[5]) {
@@ -87,8 +86,7 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     }
 
     String map() { // displays a print out version of map
-        return "Map:" +
-                "\n                                                     " +
+        return "                                                     " +
                 "\n    (Jex) ---- (Capital) ---- (Lana)           " +
                 "\n                                                     ";
     }

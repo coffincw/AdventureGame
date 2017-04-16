@@ -12,7 +12,7 @@ public class AdvWindow extends JFrame {
 
     public AdvWindow() {
 
-        mainFrame = new JFrame("Adventure Game");
+        mainFrame = new JFrame("Carthage");
 
 
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
