@@ -9,7 +9,7 @@ public class City_Capital extends CityElement {
     private final String BUILDING_SHORT_NAMES[] = {"office", "gov", "bank", "leave"};
 
     @Override
-    public void central() {
+    public void central(Player p) {
         boolean city = true;
         while (city) {
             System.out.println("****CAPITAL*****\nThere are many different locations in the capital which one would you like to enter?\nInput:");
@@ -23,7 +23,7 @@ public class City_Capital extends CityElement {
             } else if (userInput.equals(BUILDING_SHORT_NAMES[1])) {
                 location2();
             } else if (userInput.equals(BUILDING_SHORT_NAMES[2])) {
-                bank.Info(BUILDING_NAMES[2]);
+                bank.Info(BUILDING_NAMES[2], p);
             } else if (userInput.equals(BUILDING_SHORT_NAMES[3])) {
                 city = false;
             } else {}

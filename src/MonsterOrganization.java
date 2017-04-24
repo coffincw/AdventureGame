@@ -4,7 +4,6 @@
 public class MonsterOrganization {
 
     static PlayerAttack p_attack = new PlayerAttack();
-    static Player p = new Player();
     static Gearset gear = new Gearset();
     static MonsterAttack m_attack = new MonsterAttack();
 
@@ -18,19 +17,19 @@ public class MonsterOrganization {
     final static int monsterExp[] = {10, 15, 5, 20};
     final int monsterDefense[] = {3, 10, 1, 20};
 
-    void expWon(int monsterIndex) {
+    void expWon(int monsterIndex, Player p) {
         int random = AdvMain.randomInt(0, 4);
         for (int i = 0; i <= gear.gear.length; i++) {
             if (random == i) {
                 if (i == 4) {
                     gear.weaponExp[gear.weaponClass] += monsterExp[monsterIndex];
                     System.out.println(gear.gear[i] + " experience increased by " + monsterExp[monsterIndex]);
-                    gear.weaponLevelUp();
+                    gear.weaponLevelUp(p);
                     gear.weaponClassUp();
                 } else {
                     gear.armourExp[i] += monsterExp[monsterIndex];
                     System.out.println(gear.gear[i] + " experience increased by " + monsterExp[monsterIndex]);
-                    gear.armourLevelUp();
+                    gear.armourLevelUp(p);
                 }
 
             }

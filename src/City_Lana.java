@@ -9,7 +9,7 @@ public class City_Lana extends CityElement {
     static Market store = new Market();
 
     @Override
-    public void central() {
+    public void central(Player p) {
         AdvMain.city = true;
         while (AdvMain.city) {
             System.out.println("||Lana||\nWhat location would you like to enter?\nInput:");
@@ -19,7 +19,7 @@ public class City_Lana extends CityElement {
             String userInput = AdvMain.readLine(">");
             userInput = userInput.toLowerCase().replaceAll(" ", "");
             if (userInput.equals(BUILDING_SHORT_NAMES[0])) {
-                store.Info(BUILDING_NAMES[0]);
+                store.Info(BUILDING_NAMES[0], p);
             } else if (userInput.equals(BUILDING_SHORT_NAMES[1])) {
                 location();
             } else if (userInput.equals(BUILDING_SHORT_NAMES[2])) {

@@ -10,7 +10,7 @@ public class City_Jex extends CityElement {
 
 
     @Override
-    public void central() {
+    public void central(Player p) {
         boolean city = true;
         while (city) {
             System.out.println("<<Jex>>\nWhich location would you like to enter?\nInput:");
@@ -22,7 +22,7 @@ public class City_Jex extends CityElement {
             if (userInput.equals(BUILDING_SHORT_NAMES[0])) {
                 location();
             } else if (userInput.equals(BUILDING_SHORT_NAMES[1])) {
-                training.Info(BUILDING_NAMES[1]);
+                training.Info(BUILDING_NAMES[1], p);
             } else if (userInput.equals(BUILDING_SHORT_NAMES[2])) {
                 city = false;
             } else {}

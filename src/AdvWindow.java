@@ -10,6 +10,7 @@ import java.awt.FlowLayout;
 public class AdvWindow extends JFrame {
     static JFrame mainFrame;
 
+
     public AdvWindow() {
 
         mainFrame = new JFrame("Carthage");

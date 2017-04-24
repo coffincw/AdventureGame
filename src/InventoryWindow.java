@@ -11,17 +11,19 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
     AdvPanel list = new AdvPanel();
     AdvPanel actions = new AdvPanel();
 
-    Player p = new Player();
+    Player p;
 
     private JButton[] invButtons = {new JButton("Exit Backpack"), new JButton("Use Item")};
-    private JCheckBox[] consumeCB = new JCheckBox[p.consumables.length];
-    //ArrayList<JCheckBox> consumeCB = new ArrayList<>();
-    private boolean[] effect = new boolean[p.consumables.length];
+    private JCheckBox[] consumeCB = new JCheckBox[6]; //length of consumables array
+    private boolean[] effect = new boolean[6]; //length of consumables array
 
-    public InventoryWindow() {
+
+    public InventoryWindow(Player p) {
+        this.p = p;
+
         mainFrame.setTitle("Backpack");
         setArray();
-        System.out.println(p.consumables[4]);
+
 
         mainFrame.getContentPane().removeAll();
 
@@ -37,14 +39,14 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
         list.addBorder(list, "Contents");
         actions.addBorder(actions, "Options");
 
-        components();
+        components(p);
         mainFrame.validate();
         mainFrame.repaint();
         mainFrame.setVisible(true);
 
     }
 
-    public void components() {
+    public void components(Player p) {
         GridLayout grid = new GridLayout(8, 8);
         actions.setLayout(grid);
 //        BoxLayout layout = new BoxLayout(otherOptions, BoxLayout.Y_AXIS);
@@ -85,7 +87,12 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == invButtons[0]) {
             System.out.println(p.consumables[4]);
-            GameplayWindow gp = new GameplayWindow();
+            System.out.println(p.playerStats[1]);
+//            mainFrame.setLayout(new CardLayout());
+//            mainFrame.remove(actions);
+//            mainFrame.remove(list);
+//            mainFrame.add(gp);
+            GameplayWindow gp = new GameplayWindow(p);
         } else if (e.getSource() == invButtons[1]) {
             for (int check = 0; check <= consumeCB.length - 1; check++) {
                 if (effect[check]) {

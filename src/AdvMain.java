@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class AdvMain {
 
     static AdvMap map = new AdvMap();
-    static Player p = new Player();
     static Monster m = new Monster();
 
     static int nDistance;
@@ -51,6 +50,7 @@ public class AdvMain {
 
     public static void main(String[] args) {
 
+        Player p = new Player();
         AdvWindow mainWindow = new AdvWindow();
 
         replayFull = true; // play again boolean
@@ -58,7 +58,7 @@ public class AdvMain {
             turn = 0; // for armour experience
 //            spawn.nRTT = 0; //for item spawn
             int gamemodeTitle = 0;
-            TitleScreen title = new TitleScreen();
+        TitleScreen title = new TitleScreen(p);
         //GameplayWindow GP = new GameplayWindow();
 
         //currentRoomIndex = map.randomCity();

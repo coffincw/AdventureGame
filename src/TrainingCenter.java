@@ -20,7 +20,7 @@ public class TrainingCenter extends BuildingElement {
     boolean trainrepeat;
 
     @Override
-    void Info(String centerName) {
+    void Info(String centerName, Player p) {
         trainrepeat = true;
         while (trainrepeat) {
             System.out.println("Welcome to " + centerName + ".  The training center is a place where you have an opportunity to train in order to level up your armour." +
@@ -33,12 +33,12 @@ public class TrainingCenter extends BuildingElement {
             }
             String train = AdvMain.readLine(">");
             train = train.toLowerCase();
-            catchMaxUpgrade(train);
+            catchMaxUpgrade(train, p);
 
         }
     }
 
-    void initiateTraining(String trainObject, int trainingGearndx) {
+    void initiateTraining(String trainObject, int trainingGearndx, Player p) {
         nRounds = 0;
         training = true;
         System.out.println("Welcome to training! You will go through 4 fighting simulators inorder to level up your gear");
@@ -47,11 +47,11 @@ public class TrainingCenter extends BuildingElement {
             tempHeath = 100;
             monstercheck = true;
             if (nRounds == 1) {
-                spawnTrainingMonster(0);
+                spawnTrainingMonster(0, p);
             } else if (nRounds == 2) {
-                spawnTrainingMonster(1);
+                spawnTrainingMonster(1, p);
             } else if (nRounds == 3) {
-                spawnTrainingMonster(2);
+                spawnTrainingMonster(2, p);
             }
         }
         int experienceEarned;
@@ -62,16 +62,16 @@ public class TrainingCenter extends BuildingElement {
         }
 
         System.out.println("You completed " + nRounds_Final + " rounds congrats!\nYou earned " + experienceEarned + " for your " + trainObject);
-        gear.armourLevelUp();
-        gear.weaponLevelUp();
+        gear.armourLevelUp(p);
+        gear.weaponLevelUp(p);
         gear.weaponClassUp();
         training = false;
     }
 
-    void spawnTrainingMonster(int monsterIndex) {
+    void spawnTrainingMonster(int monsterIndex, Player p) {
         System.out.println("A " + Monster[monsterIndex] + " approaches...");
         while (trainingMH[monsterIndex] > 0 && tempHeath > 0) {
-            p_attack.playerAttack(Monster[monsterIndex], monsterIndex, trainingMH, training);
+            p_attack.playerAttack(Monster[monsterIndex], monsterIndex, trainingMH, training, p);
             if (trainingMH[monsterIndex] > 0) {
                 m_attack.mAttack(Monster[monsterIndex], AdvMain.randomInt(monsterDMGLOW[monsterIndex], monsterDMGHIGH[monsterIndex]), monstercheck);
             }
@@ -88,21 +88,21 @@ public class TrainingCenter extends BuildingElement {
         }
     }
 
-    void catchMaxUpgrade(String trainingItem) {
+    void catchMaxUpgrade(String trainingItem, Player p) {
         for (int ti = 0; ti <= trainGear.length - 1; ti++) {
             if (trainingItem.equals(trainGear[ti])) {
                 if (ti == 4) {
                     if (gear.weaponUpValue[4] >= 4 && gear.weaponExp[4] >= 100) {
                         System.out.println("Sorry this item is maxed out and cant be trained.\n");
                     } else {
-                        initiateTraining(trainGear[ti], ti);
+                        initiateTraining(trainGear[ti], ti, p);
                         trainrepeat = false;
                     }
                 } else {
                     if (gear.armourUpValue[ti] >= 4 && gear.armourExp[ti] >= 100) {
                         System.out.println("Sorry this item is maxed out and cant be trained.\n");
                     } else {
-                        initiateTraining(trainGear[ti], ti);
+                        initiateTraining(trainGear[ti], ti, p);
                         trainrepeat = false;
                     }
                 }

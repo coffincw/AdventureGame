@@ -8,7 +8,6 @@ public class MonsterAttack {
 
 
     private static TrainingCenter training = new TrainingCenter();
-    Player p = new Player();
 
 
     void mAttack(String monsterName, int monsterdmgValue, boolean checkmonster) {
@@ -26,7 +25,7 @@ public class MonsterAttack {
         System.out.println("The " + monsterName + " dealt " + dealtDamage + " damage! You now have " + temptempHealth + " health.");
     }
 
-    private int defenseAddition() {
+    private int defenseAddition(Player p) {
         int defense = 0;
         for (int a = 0; a <= p.additionalDefense.length - 1; a++) {
             defense += p.additionalDefense[a];

@@ -1,7 +1,7 @@
 /**
  * Created by coffincw on 11/24/16.
  */
-public class Gearset extends Player {
+public class Gearset {
 
     int weaponClass = 0;
 
@@ -48,11 +48,11 @@ public class Gearset extends Player {
         return gear;
     }
 
-    void armourLevelUp() {
+    void armourLevelUp(Player p) {
         for (int e = 0; e <= armourExp.length - 1; e++) {
             if (armourExp[e] >= 100) {
                 armourUpValue[e]++;
-                additionalDefense[e] += 10;
+                p.additionalDefense[e] += 10;
                 System.out.println(armour[e] + " leveled up to: " + armourUpgrade[armourUpValue[e]]);
                 armourExp[e] = 0;
             }
@@ -60,13 +60,13 @@ public class Gearset extends Player {
         System.out.println();
     }
 
-    void weaponLevelUp() {
+    void weaponLevelUp(Player p) {
         for (int e = 0; e <= weaponExp.length - 1; e++) {
             if (weaponExp[e] >= 100) {
                 if (weaponClass >= 3 && weaponUpValue[e] >= 100) {
                 } else {
                     weaponUpValue[e]++;
-                    additionalDamage[0] += 10;
+                    p.additionalDamage[0] += 10;
                     if (weaponClass == 0) {
                         System.out.println("Slingshot level up to " + slingshotUpgrade[weaponUpValue[e]]);
                     } else if (weaponClass == 1) {

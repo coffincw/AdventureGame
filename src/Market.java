@@ -3,16 +3,14 @@
  */
 public class Market extends BuildingElement{
 
-    Player p = new Player();
-
     @Override
-    void Info(String storeName) {
+    void Info(String storeName, Player p) {
         boolean store = true;
         int storeTalk = Integer.valueOf(AdvMain.readLine("Welcome to the " + storeName + "! I hope you find what you need here!\nYou have " + p.items[2] + " coins\n<1> Purchase Items\n<2> Exit " + storeName));
         while (store) {
             switch (storeTalk) {
                 case 1:
-                    buyItems();
+                    buyItems(p);
                     break;
                 case 2:
                     store = false;
@@ -22,7 +20,7 @@ public class Market extends BuildingElement{
         }
     }
 
-    void buyItems() { // main page to buy items
+    void buyItems(Player p) { // main page to buy items
         boolean items = true;
         while (items) {
             int itemChoice = 0;
@@ -38,10 +36,10 @@ public class Market extends BuildingElement{
             }
             switch (itemChoice) {
                 case 1: // purchase health potions
-                    buyHeathPotions();
+                    buyHeathPotions(p);
                     break;
                 case 2: // purchase pebbles
-                    buyPebbles();
+                    buyPebbles(p);
                     break;
                 case 3:
                     items = false;
@@ -53,7 +51,7 @@ public class Market extends BuildingElement{
         }
     }
 
-    void buyHeathPotions() { // purchase health potions with coins
+    void buyHeathPotions(Player p) { // purchase health potions with coins
         if (p.items[2] >= 2) { // makes sure player has enough gold
             p.items[0]++;
             System.out.println("Thank you for buying from us!" +
@@ -66,7 +64,7 @@ public class Market extends BuildingElement{
         }
     }
 
-    void buyPebbles() {  // purchase pebbles (slingshot amo) with coins
+    void buyPebbles(Player p) {  // purchase pebbles (slingshot amo) with coins
         if (p.items[2] >= 1) {
             p.items[1] += 5;
             System.out.println("Thank you for buying from us!" +

@@ -17,8 +17,10 @@ public class TitleScreen extends AdvWindow implements ActionListener {
     private JLabel[] title = {new JLabel("Carthage")};
 
     AdvPanel titlePanel = new AdvPanel();
+    Player p;
 
-    public TitleScreen() {
+    public TitleScreen(Player p) {
+        this.p = p;
 
 
         mainFrame.getContentPane().add(titlePanel);
@@ -55,7 +57,7 @@ public class TitleScreen extends AdvWindow implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonTitle[0]) {
             titlePanel.setVisible(false);
-            GameplayWindow game = new GameplayWindow();
+            GameplayWindow game = new GameplayWindow(p);
         } else if (e.getSource() == buttonTitle[1]) {
             JOptionPane.showMessageDialog(null, gameInstruct(), "Instructions", JOptionPane.QUESTION_MESSAGE);
         } else if (e.getSource() == buttonTitle[2]) {

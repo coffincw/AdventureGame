@@ -67,16 +67,16 @@ public class AdvMap {
         return r;
     }
 
-    void enterCity (int ndx) {
+    void enterCity(int ndx, Player p) {
         switch (ndx) {
             case 1:
-                capital.central();
+                capital.central(p);
                 break;
             case 2:
-                jex.central();
+                jex.central(p);
                 break;
             case 3:
-                lana.central();
+                lana.central(p);
                 break;
         }
     }

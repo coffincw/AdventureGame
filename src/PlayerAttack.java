@@ -1,7 +1,7 @@
 /**
  * Created by coffincw on 11/29/16.
  */
-public class PlayerAttack extends Player{
+public class PlayerAttack {
 
     private boolean repeatAttack;
     private int percentHit;
@@ -18,7 +18,7 @@ public class PlayerAttack extends Player{
     private final int percentEyes[] = {0, 1, 2, 3, 4};
     private final int percentChest[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18};
 
-    void playerAttack(String monsterName, int monsterIndex, int[] monsterHealth, boolean train) {
+    void playerAttack(String monsterName, int monsterIndex, int[] monsterHealth, boolean train, Player p) {
         percentHit = AdvMain.randomInt(0, 20);
         tempDamage = 0;
         repeatAttack = true;
@@ -30,7 +30,7 @@ public class PlayerAttack extends Player{
             if (train) {
                 trainingPositionOfAttack();
             } else {
-                PositionOfAttack(monsterIndex);
+                PositionOfAttack(monsterIndex, p);
             }
         }
         monsterHealth[monsterIndex] -= tempDamage;
@@ -103,24 +103,24 @@ public class PlayerAttack extends Player{
         }
     }
 
-    private void PositionOfAttack(int monsterIndex) {
+    private void PositionOfAttack(int monsterIndex, Player p) {
         String userAttack = AdvMain.readLine(">");
         if (userAttack.equals(attackMonster[0])) {
-            hitNeck(percentNeck, attackAddition(monsterIndex, AdvMain.randomInt(20, 40)));
+            hitNeck(percentNeck, attackAddition(monsterIndex, AdvMain.randomInt(20, 40), p));
         } else if (userAttack.equals(attackMonster[1])) {
-            hitEyes(percentEyes, attackAddition(monsterIndex, AdvMain.randomInt(40, 60)));
+            hitEyes(percentEyes, attackAddition(monsterIndex, AdvMain.randomInt(40, 60), p));
         } else if (userAttack.equals(attackMonster[2])) {
-            hitChest(percentChest, attackAddition(monsterIndex, AdvMain.randomInt(10, 20)));
+            hitChest(percentChest, attackAddition(monsterIndex, AdvMain.randomInt(10, 20), p));
         } else {
             System.out.println("Invalid Input");
         }
     }
 
-    private int attackAddition(int monsterIndex, int damageRange) {
+    private int attackAddition(int monsterIndex, int damageRange, Player p) {
         int damage = 0;
         damage = damageRange;
-        for (int a = 0; a <= additionalDamage.length - 1; a++) {
-            damage += additionalDamage[a];
+        for (int a = 0; a <= p.additionalDamage.length - 1; a++) {
+            damage += p.additionalDamage[a];
         }
         poison = machetePoison();
         damage += poison;

@@ -3,14 +3,12 @@
  */
 public class NationalBank extends BuildingElement{
 
-    static Player p = new Player();
-
     int planOption;
 
     static int account[] = {0, 0, 0, 0};
     static final String ACCOUNT_NAMES[] = {"", "Withdraw Anytime", "10 mile Savings Account", "Lifetime Account"};
 
-    void Info(String cityName) {
+    void Info(String cityName, Player p) {
         boolean bank = true;
         while (bank) {
             int accountOption = 0;
@@ -22,7 +20,7 @@ public class NationalBank extends BuildingElement{
             }
             switch (accountOption) {
                 case 1:
-                    depositInfo();
+                    depositInfo(p);
                     break;
                 case 2:
                     withdrawInfo();
@@ -38,7 +36,7 @@ public class NationalBank extends BuildingElement{
 
     }
 
-    void depositInfo() {
+    void depositInfo(Player p) {
         planOption = 0;
         while (planOption < 1){
             try {
@@ -49,10 +47,10 @@ public class NationalBank extends BuildingElement{
             }
             catch (NumberFormatException ex) {}
         }
-        depositAmount();
+        depositAmount(p);
     }
 
-    void depositAmount() {
+    void depositAmount(Player p) {
         int amount = 0;
         do {
             while (amount < 1){

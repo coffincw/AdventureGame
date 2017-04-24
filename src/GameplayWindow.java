@@ -11,16 +11,19 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     AdvPanel game = new AdvPanel();
     AdvPanel options = new AdvPanel();
     AdvPanel otherOptions = new AdvPanel();
-    Player p = new Player();
+
+    Player p;
     ImageIcon mapIcon = options.createImageIcon("Thumbtack.png");
     ImageIcon gearIcon = options.createImageIcon("gear.png");
     ImageIcon statsIcon = options.createImageIcon("stats.png");
 
     private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
 
-    public GameplayWindow() {
+    public GameplayWindow(Player p) {
 
+        this.p = p;
         mainFrame.getContentPane().removeAll();
+        System.out.println(p.playerStats[1]);
 
 
         game.setBackground(Color.GRAY);
@@ -71,13 +74,14 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == optionButtons[0]) {
+            System.out.println(p.playerStats[1]);
             JOptionPane.showMessageDialog(null, p.Stats(), "Stats", JOptionPane.INFORMATION_MESSAGE, statsIcon);
         } else if (e.getSource() == optionButtons[1]) {
             JOptionPane.showMessageDialog(null, p.gear.gearInfo(), "Gear", JOptionPane.INFORMATION_MESSAGE, gearIcon);
         } else if (e.getSource() == optionButtons[2]) {
             JOptionPane.showMessageDialog(null, map(), "Map", JOptionPane.INFORMATION_MESSAGE, mapIcon);
         } else if (e.getSource() == optionButtons[3]) {
-            InventoryWindow backpack = new InventoryWindow();
+            InventoryWindow backpack = new InventoryWindow(p);
         } else if (e.getSource() == optionButtons[4]) {
 
         } else if (e.getSource() == optionButtons[5]) {
