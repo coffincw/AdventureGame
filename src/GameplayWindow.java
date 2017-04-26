@@ -13,9 +13,9 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     AdvPanel otherOptions = new AdvPanel();
 
     Player p;
-    ImageIcon mapIcon = options.createImageIcon("Thumbtack.png");
-    ImageIcon gearIcon = options.createImageIcon("gear.png");
-    ImageIcon statsIcon = options.createImageIcon("stats.png");
+    private ImageIcon mapIcon = options.createImageIcon("Thumbtack.png");
+    private ImageIcon gearIcon = options.createImageIcon("gear.png");
+    private ImageIcon statsIcon = options.createImageIcon("stats.png");
 
     private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
 
@@ -23,7 +23,7 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
 
         this.p = p;
         mainFrame.getContentPane().removeAll();
-        System.out.println(p.playerStats[1]);
+
 
 
         game.setBackground(Color.GRAY);
@@ -74,7 +74,6 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == optionButtons[0]) {
-            System.out.println(p.playerStats[1]);
             JOptionPane.showMessageDialog(null, p.Stats(), "Stats", JOptionPane.INFORMATION_MESSAGE, statsIcon);
         } else if (e.getSource() == optionButtons[1]) {
             JOptionPane.showMessageDialog(null, p.gear.gearInfo(), "Gear", JOptionPane.INFORMATION_MESSAGE, gearIcon);
@@ -83,7 +82,7 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
         } else if (e.getSource() == optionButtons[3]) {
             InventoryWindow backpack = new InventoryWindow(p);
         } else if (e.getSource() == optionButtons[4]) {
-
+            p.playerStats[2]++;
         } else if (e.getSource() == optionButtons[5]) {
 
         }

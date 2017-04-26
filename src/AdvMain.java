@@ -12,10 +12,8 @@ public class AdvMain {
     static AdvMap map = new AdvMap();
     static Monster m = new Monster();
 
-    static int nDistance;
     //pick map
     static int chooseMap;
-    static int turn = 0;
 
     static int Cityndx;
 
@@ -39,26 +37,18 @@ public class AdvMain {
         return randomNum;
     }
 
-    static void End() {
-        // Console asks if player wants to play again
-        String replay = readLine("Play again? (yes) or (no)");
-        replay = replay.toLowerCase();
-        if (replay.equals("no")) {
-            replayFull = false;
-        }
-    }
-
     public static void main(String[] args) {
 
         Player p = new Player();
         AdvWindow mainWindow = new AdvWindow();
-
-        replayFull = true; // play again boolean
-//        do {
-            turn = 0; // for armour experience
-//            spawn.nRTT = 0; //for item spawn
-            int gamemodeTitle = 0;
         TitleScreen title = new TitleScreen(p);
+
+//        replayFull = true; // play again boolean
+////        do {
+//            turn = 0; // for armour experience
+////            spawn.nRTT = 0; //for item spawn
+//            int gamemodeTitle = 0;
+
         //GameplayWindow GP = new GameplayWindow();
 
         //currentRoomIndex = map.randomCity();

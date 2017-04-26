@@ -8,8 +8,8 @@ import java.awt.event.*;
  */
 public class InventoryWindow extends AdvWindow implements ActionListener, ItemListener {
 
-    AdvPanel list = new AdvPanel();
-    AdvPanel actions = new AdvPanel();
+    AdvPanel list;
+    AdvPanel actions;
 
     Player p;
 
@@ -21,15 +21,20 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
     public InventoryWindow(Player p) {
         this.p = p;
 
+        list = new AdvPanel();
+        actions = new AdvPanel();
+
         mainFrame.setTitle("Backpack");
         setArray();
 
 
         mainFrame.getContentPane().removeAll();
-
+//        mainFrame.setContentPane(list);
+//        mainFrame.setContentPane(actions);
 
         actions.setBackground(Color.GRAY);
         list.setBackground(Color.WHITE);
+
 
         mainFrame.add(list, BorderLayout.CENTER);
         mainFrame.add(actions, BorderLayout.EAST);
@@ -87,8 +92,6 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == invButtons[0]) {
-            System.out.println(p.consumables[4]);
-            System.out.println(p.playerStats[1]);
 //            mainFrame.setLayout(new CardLayout());
 //            mainFrame.remove(actions);
 //            mainFrame.remove(list);

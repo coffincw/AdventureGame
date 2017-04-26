@@ -19,7 +19,7 @@ public class Player {
     final int healAmount[] = {35, 25, 15, 10, 20, 30};
     double Coins;
     // lives, health
-    int playerStats[] = {5, 100};
+    int playerStats[] = {5, 100, 0};
 
     // weapon, pet, armour
     int additionalDamage[] = {0, 0};
@@ -106,7 +106,7 @@ public class Player {
 //    }
 
     String Stats() { // displays statistics
-        return "Miles Traveled: " + AdvMain.nDistance +
+        return "Miles Traveled: " + playerStats[2] +
                 "\nLives Remaining: " + playerStats[0] +
                 "\nHealth Remaining: " + playerStats[1];
 

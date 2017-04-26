@@ -43,29 +43,29 @@ public class AdvLocation {
         }
     }
 
-    void printInfo() {
-        if (AdvMain.nDistance > 0) {
-            System.out.print("\nWelcome to " + AdvMap.CITY_NAMES[AdvMain.Cityndx].toUpperCase() + ".");
-        } else {
-            System.out.print("\nWelcome to " + AdvMap.CITY_NAMES_RESHUFFLED[AdvMain.currentRoomIndex].toUpperCase() + ".");
-
-        }
-        System.out.println("\nInput:" +
-                "\n(g) Gear Info" +
-                "\n(s) Stats" +
-                "\n(m)	Map" +
-                "\n(b)	Backpack" +
-                "\n(l)	Leave location" +
-                "\n(e)	explore town\n");
-        for (int i = 1; i <= AdvMap.N_LOCATIONS; i++) {
-            AdvLocation room = roomInDirection(i);
-            if (room != null && room.myElement != null) {
-                room.myElement.printSenses();
-            }
-        }
-
-        System.out.println();
-    }
+//    void printInfo() {
+//        if (AdvMain.nDistance > 0) {
+//            System.out.print("\nWelcome to " + AdvMap.CITY_NAMES[AdvMain.Cityndx].toUpperCase() + ".");
+//        } else {
+//            System.out.print("\nWelcome to " + AdvMap.CITY_NAMES_RESHUFFLED[AdvMain.currentRoomIndex].toUpperCase() + ".");
+//
+//        }
+//        System.out.println("\nInput:" +
+//                "\n(g) Gear Info" +
+//                "\n(s) Stats" +
+//                "\n(m)	Map" +
+//                "\n(b)	Backpack" +
+//                "\n(l)	Leave location" +
+//                "\n(e)	explore town\n");
+//        for (int i = 1; i <= AdvMap.N_LOCATIONS; i++) {
+//            AdvLocation room = roomInDirection(i);
+//            if (room != null && room.myElement != null) {
+//                room.myElement.printSenses();
+//            }
+//        }
+//
+//        System.out.println();
+//    }
 
     void handleElement() {
         if (myElement != null) {
