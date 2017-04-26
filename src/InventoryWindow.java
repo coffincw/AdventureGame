@@ -77,6 +77,7 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
                 consumeCB[c].addItemListener(this);
             }
         }
+
 //        list.setLayout(new BoxLayout(list, BoxLayout.LINE_AXIS));
         //list.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 
@@ -98,9 +99,15 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
                 if (effect[check]) {
                     p.playerStats[1] += p.healAmount[check];
                     p.consumables[check]--;
+                    InventoryWindow inv = new InventoryWindow(p);
                 }
             }
         }
+    }
+
+    void invUpdate(int c) {
+
+
     }
 
     public void itemStateChanged(ItemEvent e) {
