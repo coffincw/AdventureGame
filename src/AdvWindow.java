@@ -1,20 +1,22 @@
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.FlowLayout;
-
+import java.awt.event.*;
 
 /**
  * Created by caleb on 4/12/17.
  */
 public class AdvWindow extends JFrame {
-    static JFrame mainFrame;
+    static JFrame mainFrame = null;
+
+
+
 
 
     public AdvWindow() {
 
-        mainFrame = new JFrame("Carthage");
-
+        if (mainFrame == null) {
+            mainFrame = new JFrame();
+        }
 
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(700, 600);

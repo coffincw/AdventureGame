@@ -7,9 +7,8 @@ import java.awt.event.*;
  * Created by caleb on 4/15/17.
  */
 public class InventoryWindow extends AdvWindow implements ActionListener, ItemListener {
-
-    AdvPanel list;
-    AdvPanel actions;
+    AdvPanel list = new AdvPanel();
+    AdvPanel actions = new AdvPanel();
 
     Player p;
 
@@ -21,18 +20,10 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
     public InventoryWindow(Player p) {
         this.p = p;
 
-        list = new AdvPanel();
-        actions = new AdvPanel();
-
         mainFrame.setTitle("Backpack");
         setArray();
 
-
-        mainFrame.getContentPane().removeAll();
-//        mainFrame.setContentPane(list);
-//        mainFrame.setContentPane(actions);
-
-        actions.setBackground(Color.GRAY);
+        actions.setBackground(Color.lightGray);
         list.setBackground(Color.WHITE);
 
 
@@ -62,9 +53,15 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
             invButtons[b].setAlignmentX(Component.CENTER_ALIGNMENT);
             invButtons[b].setPreferredSize(new Dimension(130, 100));
             invButtons[b].addActionListener(this);
-
-
         }
+
+        JLabel nCoins = new JLabel("Coins: " + p.items[2]);
+        nCoins.setFont(new Font("Serif", Font.PLAIN, 15));
+        nCoins.setHorizontalAlignment(SwingConstants.CENTER);
+
+        actions.add(nCoins);
+
+
         GridLayout grid2 = new GridLayout(30, 8);
         list.setLayout(grid2);
         JLabel consume = new JLabel("Consumables:");
@@ -96,12 +93,16 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
 //            mainFrame.remove(actions);
 //            mainFrame.remove(list);
 //            mainFrame.add(gp);
+            list.setVisible(false);
+            actions.setVisible(false);
             GameplayWindow gp = new GameplayWindow(p);
         } else if (e.getSource() == invButtons[1]) {
             for (int check = 0; check <= consumeCB.length - 1; check++) {
                 if (effect[check]) {
                     p.playerStats[1] += p.healAmount[check];
                     p.consumables[check]--;
+                    list.setVisible(false);
+                    actions.setVisible(false);
                     InventoryWindow inv = new InventoryWindow(p);
                 }
             }

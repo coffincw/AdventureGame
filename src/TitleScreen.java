@@ -12,23 +12,23 @@ import java.awt.event.WindowEvent;
 Class which have all the information available on the title screen.  It allows the player the see the game instructions, score explained, maps and to just start the game.
  */
 public class TitleScreen extends AdvWindow implements ActionListener {
+    AdvPanel titlePanel = new AdvPanel();
 
     private JButton[] buttonTitle = {new JButton("Start"), new JButton("Instructions"), new JButton("About"), new JButton("Exit")};
     private JLabel[] title = {new JLabel("Carthage")};
 
-    AdvPanel titlePanel = new AdvPanel();
+
     Player p;
 
     public TitleScreen(Player p) {
         this.p = p;
 
-
-        mainFrame.getContentPane().add(titlePanel);
+        mainFrame.setTitle("Carthage");
+        mainFrame.add(titlePanel);
         titlePanel.setBackground(Color.GRAY);
 
         //layout
-        BoxLayout layout = new BoxLayout(titlePanel, BoxLayout.Y_AXIS);
-        titlePanel.setLayout(layout);
+        titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
 
         //adding pieces
         title[0].setFont(new Font("Old London", Font.PLAIN, 100));
@@ -45,8 +45,8 @@ public class TitleScreen extends AdvWindow implements ActionListener {
         buttonTitle[1].setToolTipText("Click to view how the game is played");
         buttonTitle[2].setToolTipText("Click to exit the game");
 
-        pack();
-        setLocationRelativeTo(null);
+//        pack();
+//        setLocationRelativeTo(null);
         mainFrame.setVisible(true);
         //  } while (titleScreen);
 
@@ -55,6 +55,8 @@ public class TitleScreen extends AdvWindow implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+
         if (e.getSource() == buttonTitle[0]) {
             titlePanel.setVisible(false);
             GameplayWindow game = new GameplayWindow(p);

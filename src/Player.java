@@ -13,11 +13,9 @@ public class Player {
     int items[] = {0, 0, 0}; // split into arrays: health potions, ammo, currency?
 
     // large hp, medium hp, small hp, beer, donut, croissant
-    ArrayList<String> availableConsumables = new ArrayList<>();
     final String CONSUMABLE_NAMES[] = {"Large Health Potion", "Medium Health Potion", "Small Health Potion", "Beer", "Donut", "Croissant"};
-    int consumables[] = {0, 0, 3, 0, 7, 0};
+    int consumables[] = {2, 5, 7, 0, 8, 0};
     final int healAmount[] = {35, 25, 15, 10, 20, 30};
-    double Coins;
     // lives, health
     int playerStats[] = {5, 100, 0};
 

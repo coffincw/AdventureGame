@@ -22,9 +22,6 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     public GameplayWindow(Player p) {
 
         this.p = p;
-        mainFrame.getContentPane().removeAll();
-
-
 
         game.setBackground(Color.GRAY);
         options.setBackground(Color.WHITE);
@@ -39,11 +36,10 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
 
         components();
         mainFrame.add(otherOptions, BorderLayout.AFTER_LAST_LINE);
-        mainFrame.validate();
-        mainFrame.repaint();
 
 
         game.add(new JLabel("hello"));
+        //game.drawRandomCircle();
         mainFrame.setVisible(true);
 
     }
@@ -80,6 +76,8 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
         } else if (e.getSource() == optionButtons[2]) {
             JOptionPane.showMessageDialog(null, map(), "Map", JOptionPane.INFORMATION_MESSAGE, mapIcon);
         } else if (e.getSource() == optionButtons[3]) {
+            game.setVisible(false);
+            options.setVisible(false);
             InventoryWindow backpack = new InventoryWindow(p);
         } else if (e.getSource() == optionButtons[4]) {
             p.playerStats[2]++;
