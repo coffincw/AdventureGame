@@ -22,7 +22,7 @@ public class AdvPanel extends JPanel {
         panel.setBorder(title);
     }
 
-    protected static ImageIcon createImageIcon(String path) {
+    static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = AdvWindow.class.getResource(path);
         if (imgURL != null) {
             return new ImageIcon(imgURL);
@@ -45,5 +45,11 @@ public class AdvPanel extends JPanel {
                 (int) (Math.random() * 256)));
         g.fillOval(x, y, radius, radius);
 
+    }
+
+    public void drawCicle(int x, int y, int radius) {
+        Graphics g = getGraphics();
+        g.setColor(Color.WHITE);
+        g.fillOval(x, y, radius, radius);
     }
 }

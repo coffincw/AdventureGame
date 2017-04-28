@@ -30,6 +30,9 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
         mainFrame.add(options, BorderLayout.EAST);
 
 
+        game.add(new JLabel("hello"));
+        game.drawCicle(50, 50, 11);
+
         //adding borders
         otherOptions.addBorder(otherOptions, "Actions");
         options.addBorder(options, "Options");
@@ -38,8 +41,6 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
         mainFrame.add(otherOptions, BorderLayout.AFTER_LAST_LINE);
 
 
-        game.add(new JLabel("hello"));
-        //game.drawRandomCircle();
         mainFrame.setVisible(true);
 
     }
