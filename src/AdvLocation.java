@@ -30,7 +30,7 @@ public class AdvLocation {
     }
 
     AdvLocation roomInDirection(int dir) {
-        return AdvMain.map.getRoom(neighbors[dir]);
+        return GameplayWindow.map.getRoom(neighbors[dir]);
     }
 
     void printTravel() {

@@ -22,6 +22,7 @@ public class TitleScreen extends AdvWindow implements ActionListener {
 
     public TitleScreen(Player p) {
         this.p = p;
+        titlePanel.currentWindow = 0;
 
         mainFrame.setTitle("Carthage");
         mainFrame.add(titlePanel);
@@ -45,8 +46,6 @@ public class TitleScreen extends AdvWindow implements ActionListener {
         buttonTitle[1].setToolTipText("Click to view how the game is played");
         buttonTitle[2].setToolTipText("Click to exit the game");
 
-//        pack();
-//        setLocationRelativeTo(null);
         mainFrame.setVisible(true);
         //  } while (titleScreen);
 

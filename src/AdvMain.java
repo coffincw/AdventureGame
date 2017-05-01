@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class AdvMain {
 
-    static AdvMap map = new AdvMap();
+
     static Monster m = new Monster();
 
     //pick map

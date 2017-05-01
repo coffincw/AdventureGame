@@ -6,8 +6,15 @@ import javax.swing.border.TitledBorder;
  * Created by caleb on 3/20/17.
  */
 public class AdvPanel extends JPanel {
+
+    int currentWindow;
+
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if (currentWindow == 1) {
+            drawCircle(g, 11, 11, 25);
+        }
 
         // g.drawString("HELLO WORLD", 10, 150);
 
@@ -47,9 +54,14 @@ public class AdvPanel extends JPanel {
 
     }
 
-    public void drawCicle(int x, int y, int radius) {
-        Graphics g = getGraphics();
-        g.setColor(Color.WHITE);
-        g.fillOval(x, y, radius, radius);
+    //public void paint(Graphics g) {
+    //g.fillOval(11, 11, 25, 25);
+    //}
+
+    public void drawCircle(Graphics g, int x, int y, int radius) {
+
+        g.setColor(Color.BLACK);
+        g.fillOval(x, y, radius, radius); //FOR CIRCLE
+
     }
 }

@@ -12,6 +12,8 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     AdvPanel options = new AdvPanel();
     AdvPanel otherOptions = new AdvPanel();
 
+    static AdvMap map = new AdvMap();
+
     Player p;
     private ImageIcon mapIcon = options.createImageIcon("Thumbtack.png");
     private ImageIcon gearIcon = options.createImageIcon("gear.png");
@@ -19,9 +21,10 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
 
     private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
 
-    public GameplayWindow(Player p) {
+    public GameplayWindow(Player p, boolean change) {
 
         this.p = p;
+        game.currentWindow = 1;
 
         game.setBackground(Color.GRAY);
         options.setBackground(Color.WHITE);
@@ -30,14 +33,11 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
         mainFrame.add(options, BorderLayout.EAST);
 
 
-        game.add(new JLabel("hello"));
-        game.drawCicle(50, 50, 11);
-
         //adding borders
         otherOptions.addBorder(otherOptions, "Actions");
         options.addBorder(options, "Options");
 
-        components();
+        components(change);
         mainFrame.add(otherOptions, BorderLayout.AFTER_LAST_LINE);
 
 
@@ -46,8 +46,7 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     }
 
 
-
-    void components() {
+    void components(boolean change) {
         GridLayout grid = new GridLayout(8, 8);
         options.setLayout(grid);
 //        BoxLayout layout = new BoxLayout(otherOptions, BoxLayout.Y_AXIS);
@@ -61,9 +60,11 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
                 optionButtons[b].setPreferredSize(new Dimension(100, 100));
                 optionButtons[b].addActionListener(this);
             } else {
-                otherOptions.add(optionButtons[b]);
-                optionButtons[b].setAlignmentX(Component.CENTER_ALIGNMENT);
-                optionButtons[b].addActionListener(this);
+                if (!change) {
+                    otherOptions.add(optionButtons[b]);
+                    optionButtons[b].setAlignmentX(Component.CENTER_ALIGNMENT);
+                    optionButtons[b].addActionListener(this);
+                }
             }
         }
     }
@@ -83,8 +84,10 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
         } else if (e.getSource() == optionButtons[4]) {
             p.playerStats[2]++;
         } else if (e.getSource() == optionButtons[5]) {
-
+            //GameplayWindow game = new GameplayWindow(p, change);
         }
+
+
     }
 
     String map() { // displays a print out version of map
@@ -93,5 +96,22 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
                 "\n                                                     ";
     }
 
-
+    public void changeLocation() {
+//        map.getRoom(currentRoomIndex).printTravel();
+//        String travel = readLine("\nWhere would you like to travel to? (Enter: (explore) or (e) to stay in current location)");
+//        travel = travel.toLowerCase();
+//        int direction = 0;
+//        if ((direction = AdvMap.directionNumber(travel)) != 0) {
+//            nDistance += 1;
+//            Cityndx = AdvMap.directionNumber(travel);
+//            AdvLocation nowRoom = map.getRoom(currentRoomIndex);
+//            AdvLocation targetRoom = nowRoom.roomInDirection(direction);
+//            if (targetRoom != null) {
+//                currentRoomIndex = targetRoom.getIndex();
+//                targetRoom.handleElement();
+//            } else {
+//                System.out.println("You can't move in that direction.");
+//            }
+//        }
+    }
 }

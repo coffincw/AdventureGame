@@ -20,6 +20,8 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
     public InventoryWindow(Player p) {
         this.p = p;
 
+        list.currentWindow = 2;
+
         mainFrame.setTitle("Backpack");
         setArray();
 
