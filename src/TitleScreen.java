@@ -58,7 +58,7 @@ public class TitleScreen extends AdvWindow implements ActionListener {
 
         if (e.getSource() == buttonTitle[0]) {
             titlePanel.setVisible(false);
-            GameplayWindow game = new GameplayWindow(p);
+            GameplayWindow game = new GameplayWindow(p, false);
         } else if (e.getSource() == buttonTitle[1]) {
             JOptionPane.showMessageDialog(null, gameInstruct(), "Instructions", JOptionPane.QUESTION_MESSAGE);
         } else if (e.getSource() == buttonTitle[2]) {

@@ -97,7 +97,7 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
 //            mainFrame.add(gp);
             list.setVisible(false);
             actions.setVisible(false);
-            GameplayWindow gp = new GameplayWindow(p);
+            GameplayWindow gp = new GameplayWindow(p, false);
         } else if (e.getSource() == invButtons[1]) {
             for (int check = 0; check <= consumeCB.length - 1; check++) {
                 if (effect[check]) {

@@ -22,8 +22,6 @@ public class AdvMain {
     static boolean city;
     static boolean replayFull;
 
-    public static int currentRoomIndex = 1;
-
 
     static String readLine(String prompt) {
         System.out.println(prompt);
