@@ -37,11 +37,10 @@ public class AdvLocation {
 
     ArrayList<Integer> travel() {
         ArrayList<Integer> arr = new ArrayList<>();
-        for (int i = 1; i <= AdvMap.N_LOCATIONS; i++) {
+        for (int i = 0; i <= AdvMap.N_LOCATIONS; i++) {
             AdvLocation room = roomInDirection(i);
             if (room != null) {
                 arr.add(i);
-
             }
         }
         return arr;

@@ -9,7 +9,6 @@ import java.util.Scanner;
  */
 public class AdvMain {
 
-
     static Monster m = new Monster();
 
     //pick map
@@ -38,6 +37,8 @@ public class AdvMain {
     public static void main(String[] args) {
 
         Player p = new Player();
+
+        GameplayWindow.currentRoomIndex = 2;
         AdvWindow mainWindow = new AdvWindow();
         TitleScreen title = new TitleScreen(p);
 

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by caleb on 3/30/17.
  */
@@ -28,9 +30,9 @@ public class AdvMap {
 
     AdvMap() {
         locations = new AdvLocation[N_LOCATIONS + 1];
-        locations[1] =  new AdvLocation(1, 0, 2, 3); // v Crossroad ## v
-        locations[2] =  new AdvLocation(2, 1, 0, 0);
-        locations[3] =  new AdvLocation(3, 1, 0, 0);
+        locations[1] = new AdvLocation(1, 0, 2, 3); // Capital
+        locations[2] = new AdvLocation(2, 1, 0, 0); // Jex
+        locations[3] = new AdvLocation(3, 1, 0, 0); // Lana
 
     }
 
@@ -53,6 +55,7 @@ public class AdvMap {
         return 0;
 
     }
+
 
     AdvLocation getRoom(int ndx) {
         return locations[ndx];

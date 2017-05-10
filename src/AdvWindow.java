@@ -7,6 +7,7 @@ import java.awt.event.*;
  */
 public class AdvWindow extends JFrame {
     static JFrame mainFrame = null;
+    static AdvMap map = null;
 
 
 
@@ -16,6 +17,7 @@ public class AdvWindow extends JFrame {
 
         if (mainFrame == null) {
             mainFrame = new JFrame();
+            map = new AdvMap();
         }
 
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

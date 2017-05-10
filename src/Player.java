@@ -18,6 +18,10 @@ public class Player {
     int testConsumables[] = {0, 0, 0, 0, 0, 0};
     final int healAmount[] = {35, 25, 15, 10, 20, 30};
 
+    ArrayList<String> locationHistory = new ArrayList<>();
+    int nDistance;
+    int tempDistance;
+
 
     // lives, health
     int playerStats[] = {5, 100, 0};
