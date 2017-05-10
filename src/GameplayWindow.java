@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 /**
  * Created by caleb on 4/15/17.
@@ -10,10 +11,12 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
 
     AdvPanel game = new AdvPanel();
     AdvPanel options = new AdvPanel();
-    AdvPanel otherOptions = new AdvPanel();
+    static AdvPanel otherOptions = new AdvPanel();
 
     static int currentRoomIndex = 1;
     static int Cityndx;
+
+    String city;
 
     int nDistance;
 
@@ -24,8 +27,8 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
     private ImageIcon gearIcon = options.createImageIcon("gear.png");
     private ImageIcon statsIcon = options.createImageIcon("stats.png");
 
-    private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
-    private JButton[] changeButtons = {new JButton("Capital"), new JButton("Jex"), new JButton("Lana"), new JButton("Back to Town")};
+    static private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
+    static private JButton[] changeButtons = {new JButton("Capital"), new JButton("Jex"), new JButton("Lana"), new JButton("Back to Town")};
 
     public GameplayWindow(Player p) {
 
@@ -40,6 +43,7 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
         mainFrame.add(game, BorderLayout.CENTER);
         mainFrame.add(options, BorderLayout.EAST);
         options.addBorder(options, "Options");
+        game.addBorder(game, city);
         mainFrame.setVisible(true);
 
 
@@ -85,22 +89,46 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
             p.playerStats[2]++;
         } else if (e.getSource() == optionButtons[5]) { // "Leave"
             otherOptions.setVisible(false);
-            GameplayWindow game = new GameplayWindow(p);
+            clearOptions();
+            showLocationPanel(map.getRoom(currentRoomIndex).travel());
         } else if (e.getSource() == changeButtons[0]) { // "Capital"
-            changeLocation("capital");
+            city = "capital";
+            changeLocation();
+
+
         } else if (e.getSource() == changeButtons[1]) { // "Jex"
-            changeLocation("jex");
+            city = "jex";
+            changeLocation();
+
         } else if (e.getSource() == changeButtons[2]) { // "Lana"
-            changeLocation("lana");
+            city = "Lana";
+            changeLocation();
+
+
         } else if (e.getSource() == changeButtons[3]) { // "Back to Town"
             otherOptions.setVisible(false);
             GameplayWindow game = new GameplayWindow(p);
         }
     }
 
-    void locationPanel() {
-        for (int b = 0; b <= changeButtons.length - 1; b++) {
+    void showLocationPanel(ArrayList<Integer> direction) {
 
+        for (int i = 0; i < direction.size(); i++) {
+            otherOptions.add(GameplayWindow.changeButtons[i]);
+            changeButtons[i].setAlignmentX(Component.CENTER_ALIGNMENT);
+            changeButtons[i].addActionListener(this);
+            otherOptions.setVisible(true);
+        }
+
+    }
+
+
+    void clearOptions() {
+        for (int i = 4; i < optionButtons.length; i++) {
+            otherOptions.remove(optionButtons[i]);
+        }
+        for (int i = 0; i < changeButtons.length; i++) {
+            otherOptions.remove(changeButtons[i]);
         }
     }
 
@@ -110,12 +138,11 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
                 "\n                                                     ";
     }
 
-    public void changeLocation(String travel) {
-        map.getRoom(currentRoomIndex).printTravel();
+    public void changeLocation() {
         int direction = 0;
-        if ((direction = AdvMap.directionNumber(travel)) != 0) {
+        if ((direction = AdvMap.directionNumber(city)) != 0) {
             nDistance += 1;
-            Cityndx = AdvMap.directionNumber(travel);
+            Cityndx = AdvMap.directionNumber(city);
             AdvLocation nowRoom = map.getRoom(currentRoomIndex);
             AdvLocation targetRoom = nowRoom.roomInDirection(direction);
             if (targetRoom != null) {
@@ -125,5 +152,8 @@ public class GameplayWindow extends AdvWindow implements ActionListener {
                 System.out.println("You can't move in that direction.");
             }
         }
+        clearOptions();
+        GameplayWindow game = new GameplayWindow(p);
+
     }
 }

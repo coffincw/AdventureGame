@@ -1,6 +1,8 @@
 /* StarylLocation -- This class represents a single room on the map; a room corresponds to one vertex of a dodecahedron.
  * The class helps in navigating the map and handling encounters when the player moves.
  */
+
+import java.util.ArrayList;
 public class AdvLocation {
 
     int myIndex;
@@ -33,14 +35,16 @@ public class AdvLocation {
         return GameplayWindow.map.getRoom(neighbors[dir]);
     }
 
-    void printTravel() {
-        System.out.println("Travel to: ");
+    ArrayList<Integer> travel() {
+        ArrayList<Integer> arr = new ArrayList<>();
         for (int i = 1; i <= AdvMap.N_LOCATIONS; i++) {
             AdvLocation room = roomInDirection(i);
             if (room != null) {
-                System.out.print(" " + AdvMap.locationName(i));
+                arr.add(i);
+
             }
         }
+        return arr;
     }
 
 //    void printInfo() {
