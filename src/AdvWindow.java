@@ -9,6 +9,25 @@ public class AdvWindow extends JFrame {
     static JFrame mainFrame = null;
     static AdvMap map = null;
 
+    AdvPanel cityView = new AdvPanel();
+    AdvPanel sidebar = new AdvPanel();
+    AdvPanel actions = new AdvPanel();
+    AdvPanel locationPanel = new AdvPanel();
+
+    ImageIcon mapIcon = sidebar.createImageIcon("Thumbtack.png");
+    ImageIcon gearIcon = sidebar.createImageIcon("gear.png");
+    ImageIcon statsIcon = sidebar.createImageIcon("stats.png");
+    ImageIcon historyIcon = sidebar.createImageIcon("history.png");
+
+    static JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("History"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
+//
+
+
+    static int currentRoomIndex;
+    static int Cityndx;
+    String city;
+
+
 
 
 

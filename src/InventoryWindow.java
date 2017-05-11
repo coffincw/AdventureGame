@@ -8,7 +8,7 @@ import java.awt.event.*;
  */
 public class InventoryWindow extends AdvWindow implements ActionListener, ItemListener {
     AdvPanel list = new AdvPanel();
-    AdvPanel actions = new AdvPanel();
+    AdvPanel invActions = new AdvPanel();
 
     Player p;
 
@@ -47,8 +47,8 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
     public void components(Player p) {
         GridLayout grid = new GridLayout(8, 8);
         actions.setLayout(grid);
-//        BoxLayout layout = new BoxLayout(otherOptions, BoxLayout.Y_AXIS);
-//        otherOptions.setLayout(layout);
+//        BoxLayout layout = new BoxLayout(actions, BoxLayout.Y_AXIS);
+//        actions.setLayout(layout);
 
         for (int b = 0; b <= invButtons.length - 1; b++) {
             actions.add(invButtons[b]);

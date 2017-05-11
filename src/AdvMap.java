@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Created by caleb on 3/30/17.
  */
 
-/* AdvMap -- This class represents the entire game map.  The vertices of a dodecahedron are the locations and the edges
+/* AdvMap -- This class represents the entire cityView map.  The vertices of a dodecahedron are the locations and the edges
  * are the connections between locations.
  */
 

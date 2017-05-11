@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 
 /*
-Class which have all the information available on the title screen.  It allows the player the see the game instructions, score explained, maps and to just start the game.
+Class which have all the information available on the title screen.  It allows the player the see the cityView instructions, score explained, maps and to just start the cityView.
  */
 public class TitleScreen extends AdvWindow implements ActionListener {
     AdvPanel titlePanel = new AdvPanel();
@@ -43,8 +43,8 @@ public class TitleScreen extends AdvWindow implements ActionListener {
             buttonTitle[b].addActionListener(this);
         }
         buttonTitle[0].setToolTipText("Click to start your adventure");
-        buttonTitle[1].setToolTipText("Click to view how the game is played");
-        buttonTitle[2].setToolTipText("Click to exit the game");
+        buttonTitle[1].setToolTipText("Click to view how the cityView is played");
+        buttonTitle[2].setToolTipText("Click to exit the cityView");
 
         mainFrame.setVisible(true);
         //  } while (titleScreen);
@@ -74,14 +74,14 @@ public class TitleScreen extends AdvWindow implements ActionListener {
                 "\nUse the buttons at the bottom of the screen to" +
                 "\nmake decisions which will effect your fate in" +
                 "\nCarthage.  While in battle, use the different" +
-                "\noptions of attack to wound the enemy before" +
+                "\nsidebar of attack to wound the enemy before" +
                 "\nthey best you. Each city and location has there" +
                 "\nown pieces you can interact with.  Good Luck" +
                 "\nand dont die! ";
     }
 
     String About() {
-        return "Welcome to Carthage, an adventure game which" +
+        return "Welcome to Carthage, an adventure cityView which" +
                 "\nlets you explore different cities and areas while" +
                 "\nleveling up your gear and fighting monsters!";
     }
