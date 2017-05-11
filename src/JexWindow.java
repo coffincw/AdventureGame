@@ -8,17 +8,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
-public class CapitalWindow extends AdvWindow implements ActionListener {
+public class JexWindow extends AdvWindow implements ActionListener {
 
-    private AdvPanel capitalLocations = new AdvPanel();
+    private AdvPanel locationPanel = new AdvPanel();
 
     Player p;
-    private JButton[] locationButtons = {new JButton("Jex"), new JButton("Lana"), new JButton("Back to Town")};
+    private JButton[] changeButtons = {new JButton("Capital"), new JButton("Back to Town")};
     private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("History"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
 
-
-
-    public CapitalWindow(Player p) {
+    public JexWindow(Player p) {
         this.p = p;
         cityView.currentWindow = 1;
         p.locationHistory.add(p.city);
@@ -27,7 +25,6 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         components();
         mainFrame.add(actions, BorderLayout.AFTER_LAST_LINE);
         cityView.setBackground(Color.GRAY);
-
         sidebar.setBackground(Color.WHITE);
         mainFrame.add(sidebar, BorderLayout.EAST);
         sidebar.addBorder(sidebar, "Options");
@@ -48,14 +45,11 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
     void components() {
         GridLayout grid = new GridLayout(8, 8);
         sidebar.setLayout(grid);
-//        BoxLayout layout = new BoxLayout(actions, BoxLayout.Y_AXIS);
-//        actions.setLayout(layout);
 
         for (int b = 0; b <= optionButtons.length - 1; b++) {
             if (b <= 4) {
 
                 addSidebarElement(b);
-
 
             } else {
                 actions.add(optionButtons[b]);
@@ -90,57 +84,48 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         } else if (e.getSource() == optionButtons[5]) { // "Explore"
             p.playerStats[2]++;
         } else if (e.getSource() == optionButtons[6]) { // "Leave"
-            for (int i = 0; i < optionButtons.length; i++) {
-                actions.remove(optionButtons[i]);
-            }
-            mainFrame.remove(sidebar);
-            mainFrame.remove(actions);
-            mainFrame.remove(cityView);
-            cityView.setVisible(false);
-            sidebar.setVisible(false);
-            actions.setVisible(false);
-            showLocationPanel();
-        } else if (e.getSource() == locationButtons[0]) { // "Jex"
-            mainFrame.remove(sidebar);
-            mainFrame.remove(actions);
-            mainFrame.remove(cityView);
-            mainFrame.remove(capitalLocations);
-            cityView.setVisible(false);
-            sidebar.setVisible(false);
-            actions.setVisible(false);
-            capitalLocations.setVisible(false);
-
-//            for (int i = 0 ; i < locationButtons.length ; i++) {
-//                capitalLocations.remove(locationButtons[i]);
+//            for (int i = 0 ; i < optionButtons.length ; i++) {
+//                actions.remove(optionButtons[i]);
 //            }
-            p.city = "jex";
-            JexWindow jex = new JexWindow(p);
+            mainFrame.remove(actions);
 
-        } else if (e.getSource() == locationButtons[1]) { // "Lana"
-            mainFrame.remove(capitalLocations);
-            for (int i = 0; i < locationButtons.length; i++) {
-                capitalLocations.remove(locationButtons[i]);
-            }
-            p.city = "lana";
-            //LanaWindow lana = new LanaWindow(p);
+            actions.setVisible(false);
 
+            showLocationPanel();
+        } else if (e.getSource() == changeButtons[0]) { // "Capital"
+            mainFrame.remove(locationPanel);
+            mainFrame.remove(sidebar);
+            mainFrame.remove(cityView);
 
-        } else if (e.getSource() == locationButtons[2]) { // "Back to Town"
+            cityView.setVisible(false);
+            sidebar.setVisible(false);
+            locationPanel.setVisible(false);
+//            for (int i = 0 ; i < changeButtons.length ; i++) {
+//                locationPanel.remove(changeButtons[i]);
+//            }
+
+            p.city = "capital";
+            CapitalWindow capital = new CapitalWindow(p);
+
+        } else if (e.getSource() == changeButtons[1]) { // "Back to Town"
             actions.setVisible(false);
             GameplayWindow game = new GameplayWindow(p);
         }
     }
 
     void showLocationPanel() {
-        mainFrame.add(capitalLocations, BorderLayout.AFTER_LAST_LINE);
-        capitalLocations.addBorder(capitalLocations, "Locations");
-        for (int i = 0; i < locationButtons.length; i++) {
-            capitalLocations.add(locationButtons[i]);
-            locationButtons[i].setAlignmentX(Component.CENTER_ALIGNMENT);
-            locationButtons[i].addActionListener(this);
+
+        mainFrame.add(locationPanel, BorderLayout.AFTER_LAST_LINE);
+        locationPanel.addBorder(locationPanel, "Locations");
+
+        for (int i = 0; i < changeButtons.length; i++) {
+            locationPanel.add(changeButtons[i]);
+            changeButtons[i].setAlignmentX(Component.CENTER_ALIGNMENT);
+            changeButtons[i].addActionListener(this);
 
         }
-        capitalLocations.setVisible(true);
+
+        locationPanel.setVisible(true);
 
     }
 

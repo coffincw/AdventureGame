@@ -24,6 +24,10 @@ public class AdvPanel extends JPanel {
         getGraphics().clearRect(0, 0, getWidth(), getHeight() );
     }
 
+    void addSidebar(AdvPanel panel, int rep) {
+
+    }
+
     void addBorder(AdvPanel panel, String borderTitle) {
         TitledBorder title = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), borderTitle);
         panel.setBorder(title);

@@ -12,6 +12,8 @@ public class Player {
     // Health Potions, Pebbles, coins
     int items[] = {0, 0, 0}; // split into arrays: health potions, ammo, currency?
 
+    String city;
+
     // large hp, medium hp, small hp, beer, donut, croissant
     final String CONSUMABLE_NAMES[] = {"Large Health Potion", "Medium Health Potion", "Small Health Potion", "Beer", "Donut", "Croissant"};
     int consumables[] = {2, 5, 7, 0, 8, 0};
@@ -37,6 +39,20 @@ public class Player {
                 "\nLives Remaining: " + playerStats[0] +
                 "\nHealth Remaining: " + playerStats[1];
 
+    }
+
+    String map() { // displays a print out version of map
+        return "                                                     " +
+                "\n    (Jex) ---- (Capital) ---- (Lana)           " +
+                "\n                                                     ";
+    }
+
+    String history() {
+        String his = "";
+        for (String i : locationHistory) {
+            his += " " + i + "\n";
+        }
+        return his;
     }
 
 //    void arrayReset() {
