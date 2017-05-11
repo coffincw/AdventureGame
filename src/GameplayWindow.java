@@ -28,6 +28,7 @@ public class GameplayWindow extends AdvWindow {
                 JexWindow jex = new JexWindow(p);
                 break;
             case "lana":
+                LanaWindow lana = new LanaWindow(p);
                 break;
         }
     }

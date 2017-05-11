@@ -108,7 +108,14 @@ public class JexWindow extends AdvWindow implements ActionListener {
             CapitalWindow capital = new CapitalWindow(p);
 
         } else if (e.getSource() == changeButtons[1]) { // "Back to Town"
+            mainFrame.remove(sidebar);
+            mainFrame.remove(actions);
+            mainFrame.remove(cityView);
+            mainFrame.remove(locationPanel);
+            cityView.setVisible(false);
+            sidebar.setVisible(false);
             actions.setVisible(false);
+            locationPanel.setVisible(false);
             GameplayWindow game = new GameplayWindow(p);
         }
     }
