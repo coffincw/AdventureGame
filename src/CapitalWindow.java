@@ -2,10 +2,14 @@
  * Created by caleb on 5/11/17.
  */
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CapitalWindow extends AdvWindow implements ActionListener {
@@ -15,7 +19,6 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
     Player p;
     private JButton[] locationButtons = {new JButton("Jex"), new JButton("Lana"), new JButton("Back to Town")};
     private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("History"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
-
 
 
     public CapitalWindow(Player p) {
@@ -36,13 +39,26 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         mainFrame.add(cityView, BorderLayout.CENTER);
 
 
+        cityComponents();
+
         cityView.addBorder(cityView, p.city);
+
 
         //setting viewable
         cityView.setVisible(true);
         sidebar.setVisible(true);
         actions.setVisible(true);
         mainFrame.setVisible(true);
+    }
+
+    void cityComponents() {
+        GridLayout cityGrid = new GridLayout(8, 8);
+        cityView.setLayout(cityGrid);
+        ImageIcon image = new ImageIcon(this.getClass().getResource("house.png"));
+        JLabel label = new JLabel();
+        label.setIcon(image);
+
+        cityView.add(label);
     }
 
     void components() {

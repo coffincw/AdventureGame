@@ -12,7 +12,7 @@ public class Player {
     // Health Potions, Pebbles, coins
     int items[] = {0, 0, 0}; // split into arrays: health potions, ammo, currency?
 
-    String city;
+    static String city;
 
     // large hp, medium hp, small hp, beer, donut, croissant
     final String CONSUMABLE_NAMES[] = {"Large Health Potion", "Medium Health Potion", "Small Health Potion", "Beer", "Donut", "Croissant"};

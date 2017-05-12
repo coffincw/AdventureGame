@@ -1,6 +1,14 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import java.awt.image.*;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  * Created by caleb on 3/20/17.
@@ -10,16 +18,43 @@ public class AdvPanel extends JPanel {
     int currentWindow;
 
 
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (currentWindow == 1) {
-            drawCircle(g, 11, 11, 25);
+            switch (Player.city) {
+                case "capital":
+                    // drawCircle(g, 11, 11, 25);
+
+
+                    break;
+                case "jex":
+                    break;
+                case "lana":
+                    break;
+            }
+
         }
-
-        // g.drawString("HELLO WORLD", 10, 150);
-
-        // g.setColor(Color.WHITE);
+//
+//         g.drawString("HELLO WORLD", 10, 150);
+//
+//         g.setColor(Color.WHITE);
     }
+
+    Image getScaledImage(Image srcImg, int w, int h) {
+        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+
+        return resizedImg;
+    }
+
+
+
+
     public void erase() {
         getGraphics().clearRect(0, 0, getWidth(), getHeight() );
     }
