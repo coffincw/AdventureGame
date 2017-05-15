@@ -18,12 +18,16 @@ public class AdvPanel extends JPanel {
     int currentWindow;
 
 
-
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (currentWindow == 1) {
             switch (Player.city) {
                 case "capital":
+
+                    ImageIcon image = createImage("capital_background.png");
+
+                    image.paintIcon(this, g, 20, 20);
+                    System.out.println("i");
 
                     // drawCircle(g, 11, 11, 25);
 
@@ -61,10 +65,8 @@ public class AdvPanel extends JPanel {
     }
 
 
-
-
     public void erase() {
-        getGraphics().clearRect(0, 0, getWidth(), getHeight() );
+        getGraphics().clearRect(0, 0, getWidth(), getHeight());
     }
 
     void addSidebar(AdvPanel panel, int rep) {

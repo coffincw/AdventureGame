@@ -21,18 +21,21 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         cityView.currentWindow = 1;
         p.locationHistory.add(p.city);
 
+
         actions.addBorder(actions, "Actions");
         components();
+
         mainFrame.add(actions, BorderLayout.AFTER_LAST_LINE);
         cityView.setBackground(Color.GRAY);
-
         sidebar.setBackground(Color.WHITE);
         mainFrame.add(sidebar, BorderLayout.EAST);
         sidebar.addBorder(sidebar, "Options");
 
 
-        mainFrame.add(background.addBackground("capital_background.png"));
+        //mainFrame.add(background.addBackground("capital_background.png"));
         mainFrame.add(cityView, BorderLayout.CENTER);
+        //mainFrame.setContentPane(cityView.addBackground("capital_background.png"));
+
 
 
         cityComponents();
