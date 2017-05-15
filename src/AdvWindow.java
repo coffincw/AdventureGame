@@ -10,6 +10,8 @@ public class AdvWindow extends JFrame {
     static AdvMap map = null;
 
     AdvPanel cityView = new AdvPanel();
+    AdvPanel background = new AdvPanel();
+
     AdvPanel sidebar = new AdvPanel();
     AdvPanel actions = new AdvPanel();
 

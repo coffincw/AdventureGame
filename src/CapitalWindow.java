@@ -2,15 +2,10 @@
  * Created by caleb on 5/11/17.
  */
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class CapitalWindow extends AdvWindow implements ActionListener {
 
@@ -36,6 +31,7 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         sidebar.addBorder(sidebar, "Options");
 
 
+        mainFrame.add(background.addBackground("capital_background.png"));
         mainFrame.add(cityView, BorderLayout.CENTER);
 
 
@@ -52,14 +48,16 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
     }
 
     void cityComponents() {
+
         GridLayout cityGrid = new GridLayout(0, 3);
         cityGrid.setHgap(10);
         cityGrid.setVgap(2);
         cityView.setLayout(cityGrid);
         cityView.addImage(cityView, "house.png");
-        cityView.addImage(cityView, "history.png");
-        cityView.addImage(cityView, "stats.png");
-        cityView.addImage(cityView, "gear.png");
+        cityView.addImage(cityView, "bank.png");
+        cityView.addImage(cityView, "house.png");
+        cityView.add(new JLabel(""));
+        cityView.addImage(cityView, "house.png");
         cityGrid.layoutContainer(cityView);
     }
 

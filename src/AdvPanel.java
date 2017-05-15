@@ -24,6 +24,7 @@ public class AdvPanel extends JPanel {
         if (currentWindow == 1) {
             switch (Player.city) {
                 case "capital":
+
                     // drawCircle(g, 11, 11, 25);
 
 
@@ -41,10 +42,21 @@ public class AdvPanel extends JPanel {
 //         g.setColor(Color.WHITE);
     }
 
-    void addImage(AdvPanel panel, String imagePath) {
+    JLabel addBackground(String imagePath) {
+        JLabel contentPane = new JLabel();
+        contentPane.setIcon(createImage(imagePath));
+        contentPane.setLayout(new BorderLayout());
+        return contentPane;
+    }
+
+    ImageIcon createImage(String imagePath) {
         ImageIcon image = new ImageIcon(this.getClass().getResource(imagePath));
+        return image;
+    }
+
+    void addImage(AdvPanel panel, String imagePath) {
         JLabel label = new JLabel();
-        label.setIcon(image);
+        label.setIcon(createImage(imagePath));
         panel.add(label);
     }
 
