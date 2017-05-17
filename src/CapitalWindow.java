@@ -52,13 +52,24 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
 
     void cityComponents() {
 
-        GridLayout cityGrid = new GridLayout(0, 3);
+        GridLayout cityGrid = new GridLayout(0, 6);
         cityGrid.setHgap(10);
         cityGrid.setVgap(2);
         cityView.setLayout(cityGrid);
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
         cityView.addImage(cityView, "house.png");
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
         cityView.addImage(cityView, "bank.png");
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
         cityView.addImage(cityView, "house.png");
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
         cityView.addImage(cityView, "house.png");
         cityGrid.layoutContainer(cityView);

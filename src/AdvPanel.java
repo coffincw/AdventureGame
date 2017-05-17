@@ -24,7 +24,7 @@ public class AdvPanel extends JPanel {
             switch (Player.city) {
                 case "capital":
 
-                    ImageIcon image = createImage("capital_background.png");
+                    ImageIcon image = createImage("capital_background_new.png");
 
                     image.paintIcon(this, g, 20, 20);
                     System.out.println("i");
@@ -61,6 +61,7 @@ public class AdvPanel extends JPanel {
     void addImage(AdvPanel panel, String imagePath) {
         JLabel label = new JLabel();
         label.setIcon(createImage(imagePath));
+        label.setBorder(BorderFactory.createEmptyBorder(100, 30, 100, 30));
         panel.add(label);
     }
 
