@@ -23,14 +23,15 @@ public class AdvPanel extends JPanel {
         if (currentWindow == 1) {
             switch (Player.city) {
                 case "capital":
-
-                    ImageIcon image = createImage("capital_background_new.png");
-
-                    image.paintIcon(this, g, 20, 20);
-                    System.out.println("i");
-
+                    ImageIcon titleImage = createImage("capital_background_new.png");
+                    titleImage.paintIcon(this, g, 0, 0);
                     // drawCircle(g, 11, 11, 25);
 
+
+                    break;
+                case "inner_capital":
+                    ImageIcon image = createImage("capital_background_new.png");
+                    image.paintIcon(this, g, 0, 0);
 
                     break;
                 case "jex":

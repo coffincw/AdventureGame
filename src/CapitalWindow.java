@@ -30,50 +30,19 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         sidebar.setBackground(Color.WHITE);
         mainFrame.add(sidebar, BorderLayout.EAST);
         sidebar.addBorder(sidebar, "Options");
+        mainFrame.add(cityTitle, BorderLayout.CENTER);
+        cityTitle.setBackground(Color.YELLOW);
 
-
-        //mainFrame.add(background.addBackground("capital_background.png"));
-        mainFrame.add(cityView, BorderLayout.CENTER);
-        //mainFrame.setContentPane(cityView.addBackground("capital_background.png"));
-
-
-
-        cityComponents();
-
-        cityView.addBorder(cityView, p.city);
 
 
         //setting viewable
-        cityView.setVisible(true);
+        cityTitle.setVisible(true);
         sidebar.setVisible(true);
         actions.setVisible(true);
         mainFrame.setVisible(true);
     }
 
-    void cityComponents() {
 
-        GridLayout cityGrid = new GridLayout(0, 6);
-        cityGrid.setHgap(10);
-        cityGrid.setVgap(2);
-        cityView.setLayout(cityGrid);
-        cityView.add(new JLabel(""));
-        cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "house.png");
-        cityView.add(new JLabel(""));
-        cityView.add(new JLabel(""));
-        cityView.add(new JLabel(""));
-        cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "bank.png");
-        cityView.add(new JLabel(""));
-        cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "house.png");
-        cityView.add(new JLabel(""));
-        cityView.add(new JLabel(""));
-        cityView.add(new JLabel(""));
-        cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "house.png");
-        cityGrid.layoutContainer(cityView);
-    }
 
     void components() {
         GridLayout grid = new GridLayout(8, 8);
@@ -119,6 +88,9 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
             InventoryWindow backpack = new InventoryWindow(p);
         } else if (e.getSource() == optionButtons[5]) { // "Explore"
             p.playerStats[2]++;
+            p.city = "inner_capital";
+            CapitalContents cap = new CapitalContents(p);
+
         } else if (e.getSource() == optionButtons[6]) { // "Leave"
             for (int i = 0; i < optionButtons.length; i++) {
                 actions.remove(optionButtons[i]);
