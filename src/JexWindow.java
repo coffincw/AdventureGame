@@ -10,9 +10,10 @@ import java.awt.event.ActionEvent;
 public class JexWindow extends AdvWindow implements ActionListener {
 
     private AdvPanel locationPanel = new AdvPanel();
+    private AdvPanel jexSites = new AdvPanel();
 
     Player p;
-    private JButton[] changeButtons = {new JButton("Capital"), new JButton("Back to Town")};
+    private JButton[] changeButtons = {new JButton("Capital"), new JButton("Back to Town"), new JButton("Exit Town Exterior")};
     private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("History"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
 
     public JexWindow(Player p) {
@@ -32,13 +33,32 @@ public class JexWindow extends AdvWindow implements ActionListener {
         mainFrame.add(cityView, BorderLayout.CENTER);
 
 
-        cityView.addBorder(cityView, p.city);
 
         //setting viewable
-        cityView.setVisible(true);
         sidebar.setVisible(true);
         actions.setVisible(true);
         mainFrame.setVisible(true);
+    }
+
+    void cityComponents() {
+        GridLayout cityGrid = new GridLayout(0, 4);
+        cityGrid.setHgap(10);
+        cityGrid.setVgap(2);
+        cityView.addBorder(cityView, "Jex");
+        cityView.setLayout(cityGrid);
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.addImage(cityView, "market.png");
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.addImage(cityView, "house.png");
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.addImage(cityView, "training.png");
+        cityGrid.layoutContainer(cityView);
+        showInnerCityOptions();
     }
 
     void components() {
@@ -82,6 +102,14 @@ public class JexWindow extends AdvWindow implements ActionListener {
             InventoryWindow backpack = new InventoryWindow(p);
         } else if (e.getSource() == optionButtons[5]) { // "Explore"
             p.playerStats[2]++;
+            p.city = "inner_jex";
+            AdvPanel innerCity = new AdvPanel();
+            for (int i = 0; i < optionButtons.length; i++) {
+                actions.remove(optionButtons[i]);
+            }
+            mainFrame.remove(actions);
+            actions.setVisible(false);
+            cityComponents();
         } else if (e.getSource() == optionButtons[6]) { // "Leave"
 //            for (int i = 0 ; i < optionButtons.length ; i++) {
 //                actions.remove(optionButtons[i]);
@@ -106,11 +134,14 @@ public class JexWindow extends AdvWindow implements ActionListener {
             p.city = "capital";
             CapitalWindow capital = new CapitalWindow(p);
 
-        } else if (e.getSource() == changeButtons[1]) { // "Back to Town"
+        } else if (e.getSource() == changeButtons[1] || e.getSource() == changeButtons[2]) { // "Back to Town"
+            p.city = "jex";
             mainFrame.remove(sidebar);
             mainFrame.remove(actions);
             mainFrame.remove(cityView);
             mainFrame.remove(locationPanel);
+            mainFrame.remove(jexSites);
+            jexSites.setVisible(false);
             cityView.setVisible(false);
             sidebar.setVisible(false);
             actions.setVisible(false);
@@ -119,12 +150,21 @@ public class JexWindow extends AdvWindow implements ActionListener {
         }
     }
 
+    void showInnerCityOptions() {
+        mainFrame.add(jexSites, BorderLayout.AFTER_LAST_LINE);
+        jexSites.addBorder(jexSites, "City Actions:");
+        jexSites.add(changeButtons[2]);
+        changeButtons[2].setAlignmentX(Component.CENTER_ALIGNMENT);
+        changeButtons[2].addActionListener(this);
+
+    }
+
     void showLocationPanel() {
 
         mainFrame.add(locationPanel, BorderLayout.AFTER_LAST_LINE);
         locationPanel.addBorder(locationPanel, "Locations");
 
-        for (int i = 0; i < changeButtons.length; i++) {
+        for (int i = 0; i < changeButtons.length - 1; i++) {
             locationPanel.add(changeButtons[i]);
             changeButtons[i].setAlignmentX(Component.CENTER_ALIGNMENT);
             changeButtons[i].addActionListener(this);

@@ -23,20 +23,32 @@ public class AdvPanel extends JPanel {
         if (currentWindow == 1) {
             switch (Player.city) {
                 case "capital":
-                    ImageIcon titleImage = createImage("capital_background_new.png");
-                    titleImage.paintIcon(this, g, 0, 0);
+                    ImageIcon capitalTitle = createImage("capital_title.png");
+                    capitalTitle.paintIcon(this, g, -58, -60);
                     // drawCircle(g, 11, 11, 25);
 
 
                     break;
                 case "inner_capital":
-                    ImageIcon image = createImage("capital_background_new.png");
-                    image.paintIcon(this, g, 0, 0);
+                    ImageIcon capitalBackground = createImage("capital_background_new.png");
+                    capitalBackground.paintIcon(this, g, 0, 0);
 
                     break;
                 case "jex":
+                    ImageIcon jexTitle = createImage("jex_title.png");
+                    jexTitle.paintIcon(this, g, -58, -60);
+                    break;
+                case "inner_jex":
+                    ImageIcon jexBackground = createImage("jex_background.png");
+                    jexBackground.paintIcon(this, g, 0, 0);
                     break;
                 case "lana":
+                    ImageIcon lanaTitle = createImage("lana_title.png");
+                    lanaTitle.paintIcon(this, g, 0, 0);
+                    break;
+                case "inner_lana":
+                    ImageIcon lanaBackground = createImage("lana_background.png");
+                    lanaBackground.paintIcon(this, g, 0, 0);
                     break;
             }
 
@@ -62,7 +74,7 @@ public class AdvPanel extends JPanel {
     void addImage(AdvPanel panel, String imagePath) {
         JLabel label = new JLabel();
         label.setIcon(createImage(imagePath));
-        label.setBorder(BorderFactory.createEmptyBorder(100, 30, 100, 30));
+        label.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         panel.add(label);
     }
 

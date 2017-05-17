@@ -10,9 +10,10 @@ import java.awt.event.ActionEvent;
 public class CapitalWindow extends AdvWindow implements ActionListener {
 
     private AdvPanel capitalLocations = new AdvPanel();
+    private AdvPanel capitalSites = new AdvPanel();
 
     Player p;
-    private JButton[] locationButtons = {new JButton("Jex"), new JButton("Lana"), new JButton("Back to Town")};
+    private JButton[] locationButtons = {new JButton("Jex"), new JButton("Lana"), new JButton("Back to Town"), new JButton("Exit Town Interior")};
     private JButton[] optionButtons = {new JButton("Stats"), new JButton("Gear Info"), new JButton("Map"), new JButton("History"), new JButton("Backpack"), new JButton("Explore"), new JButton("Leave")};
 
 
@@ -30,16 +31,42 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         sidebar.setBackground(Color.WHITE);
         mainFrame.add(sidebar, BorderLayout.EAST);
         sidebar.addBorder(sidebar, "Options");
-        mainFrame.add(cityTitle, BorderLayout.CENTER);
-        cityTitle.setBackground(Color.YELLOW);
+        //mainFrame.add(cityTitle, BorderLayout.CENTER);
 
-
+        mainFrame.add(cityView, BorderLayout.CENTER);
+        //
 
         //setting viewable
-        cityTitle.setVisible(true);
+
         sidebar.setVisible(true);
         actions.setVisible(true);
         mainFrame.setVisible(true);
+    }
+
+    void cityComponents() {
+        GridLayout cityGrid = new GridLayout(0, 6);
+        cityGrid.setHgap(10);
+        cityGrid.setVgap(2);
+        cityView.addBorder(cityView, "Capital");
+        cityView.setLayout(cityGrid);
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.addImage(cityView, "house.png");
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.addImage(cityView, "bank.png");
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.addImage(cityView, "house.png");
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.add(new JLabel(""));
+        cityView.addImage(cityView, "house.png");
+        cityGrid.layoutContainer(cityView);
+        showInnerCityOptions();
     }
 
 
@@ -89,7 +116,17 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         } else if (e.getSource() == optionButtons[5]) { // "Explore"
             p.playerStats[2]++;
             p.city = "inner_capital";
-            CapitalContents cap = new CapitalContents(p);
+            AdvPanel innerCity = new AdvPanel();
+            //cityView.paintComponent(super.getGraphics());
+            for (int i = 0; i < optionButtons.length; i++) {
+                actions.remove(optionButtons[i]);
+            }
+            //mainFrame.remove(sidebar);
+            mainFrame.remove(actions);
+            //sidebar.setVisible(false);
+            actions.setVisible(false);
+            cityComponents();
+
 
         } else if (e.getSource() == optionButtons[6]) { // "Leave"
             for (int i = 0; i < optionButtons.length; i++) {
@@ -131,11 +168,14 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
             LanaWindow lana = new LanaWindow(p);
 
 
-        } else if (e.getSource() == locationButtons[2]) { // "Back to Town"
+        } else if (e.getSource() == locationButtons[2] || e.getSource() == locationButtons[3]) { // "Back to Town"
+            p.city = "capital";
             mainFrame.remove(sidebar);
             mainFrame.remove(actions);
             mainFrame.remove(cityView);
             mainFrame.remove(capitalLocations);
+            mainFrame.remove(capitalSites);
+            capitalSites.setVisible(false);
             cityView.setVisible(false);
             sidebar.setVisible(false);
             actions.setVisible(false);
@@ -144,10 +184,19 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         }
     }
 
+    void showInnerCityOptions() {
+        mainFrame.add(capitalSites, BorderLayout.AFTER_LAST_LINE);
+        capitalSites.addBorder(capitalSites, "City Actions:");
+        capitalSites.add(locationButtons[3]);
+        locationButtons[3].setAlignmentX(Component.CENTER_ALIGNMENT);
+        locationButtons[3].addActionListener(this);
+
+    }
+
     void showLocationPanel() {
         mainFrame.add(capitalLocations, BorderLayout.AFTER_LAST_LINE);
         capitalLocations.addBorder(capitalLocations, "Locations");
-        for (int i = 0; i < locationButtons.length; i++) {
+        for (int i = 0; i < locationButtons.length - 1; i++) {
             capitalLocations.add(locationButtons[i]);
             locationButtons[i].setAlignmentX(Component.CENTER_ALIGNMENT);
             locationButtons[i].addActionListener(this);
