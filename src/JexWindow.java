@@ -98,6 +98,7 @@ public class JexWindow extends AdvWindow implements ActionListener {
             cityView.setVisible(false);
             sidebar.setVisible(false);
             actions.setVisible(false);
+            jexSites.setVisible(false);
             p.tempDistance = 0;
             InventoryWindow backpack = new InventoryWindow(p);
         } else if (e.getSource() == optionButtons[5]) { // "Explore"

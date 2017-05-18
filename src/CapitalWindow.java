@@ -109,6 +109,7 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
             JOptionPane.showMessageDialog(null, p.history(), "Location History", JOptionPane.INFORMATION_MESSAGE, historyIcon);
         } else if (e.getSource() == optionButtons[4]) { // "Inventory"
             cityView.setVisible(false);
+            capitalSites.setVisible(false);
             sidebar.setVisible(false);
             actions.setVisible(false);
             p.tempDistance = 0;
