@@ -44,7 +44,7 @@ public class AdvPanel extends JPanel {
                     break;
                 case "lana":
                     ImageIcon lanaTitle = createImage("lana_title.png");
-                    lanaTitle.paintIcon(this, g, 0, 0);
+                    lanaTitle.paintIcon(this, g, -58, -60);
                     break;
                 case "inner_lana":
                     ImageIcon lanaBackground = createImage("lana_background.png");
@@ -69,13 +69,6 @@ public class AdvPanel extends JPanel {
     ImageIcon createImage(String imagePath) {
         ImageIcon image = new ImageIcon(this.getClass().getResource(imagePath));
         return image;
-    }
-
-    void addImage(AdvPanel panel, String imagePath) {
-        JLabel label = new JLabel();
-        label.setIcon(createImage(imagePath));
-        label.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
-        panel.add(label);
     }
 
 

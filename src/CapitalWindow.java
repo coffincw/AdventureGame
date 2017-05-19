@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class CapitalWindow extends AdvWindow implements ActionListener {
 
@@ -51,22 +53,44 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
         cityView.setLayout(cityGrid);
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "house.png");
+        addImage(cityView, "house.png");
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "bank.png");
+        addImage(cityView, "bank.png");
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "house.png");
+        addImage(cityView, "house(1).png");
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "house.png");
+        addImage(cityView, "house(2).png");
         cityGrid.layoutContainer(cityView);
         showInnerCityOptions();
+    }
+
+    void addImage(AdvPanel panel, String imagePath) {
+        JLabel label = new JLabel();
+        label.setIcon(panel.createImage(imagePath));
+        label.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (imagePath.equals("bank.png")) {
+
+                } else if (imagePath.equals("house.png")) {
+
+                } else if (imagePath.equals("house(1).png")) {
+
+                } else if (imagePath.equals("house(2).png")) {
+
+                }
+                System.out.println("Yay you clicked me");
+            }
+        });
+        panel.add(label);
     }
 
 
@@ -118,13 +142,10 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
             p.playerStats[2]++;
             p.city = "inner_capital";
             AdvPanel innerCity = new AdvPanel();
-            //cityView.paintComponent(super.getGraphics());
             for (int i = 0; i < optionButtons.length; i++) {
                 actions.remove(optionButtons[i]);
             }
-            //mainFrame.remove(sidebar);
             mainFrame.remove(actions);
-            //sidebar.setVisible(false);
             actions.setVisible(false);
             cityComponents();
 

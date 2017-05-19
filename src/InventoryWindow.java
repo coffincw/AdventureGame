@@ -97,11 +97,11 @@ public class InventoryWindow extends AdvWindow implements ActionListener, ItemLi
 //            mainFrame.add(gp);
             list.setVisible(false);
             actions.setVisible(false);
-            if (p.city == "inner_capital") {
+            if (p.city.equals("inner_capital")) {
                 p.city = "capital";
-            } else if (p.city == "inner_jex") {
+            } else if (p.city.equals("inner_jex")) {
                 p.city = "jex";
-            } else if (p.city == "inner_lana") {
+            } else if (p.city.equals("inner_lana")) {
                 p.city = "lana";
             }
             GameplayWindow gp = new GameplayWindow(p);

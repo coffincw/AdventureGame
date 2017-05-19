@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class JexWindow extends AdvWindow implements ActionListener {
 
@@ -32,8 +34,6 @@ public class JexWindow extends AdvWindow implements ActionListener {
 
         mainFrame.add(cityView, BorderLayout.CENTER);
 
-
-
         //setting viewable
         sidebar.setVisible(true);
         actions.setVisible(true);
@@ -48,17 +48,37 @@ public class JexWindow extends AdvWindow implements ActionListener {
         cityView.setLayout(cityGrid);
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "market.png");
+        addImage(cityView, "market.png");
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "house.png");
+        addImage(cityView, "house.png");
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
         cityView.add(new JLabel(""));
-        cityView.addImage(cityView, "training.png");
+        addImage(cityView, "training.png");
         cityGrid.layoutContainer(cityView);
         showInnerCityOptions();
+    }
+
+    void addImage(AdvPanel panel, String imagePath) {
+        JLabel label = new JLabel();
+        label.setIcon(panel.createImage(imagePath));
+        label.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (imagePath.equals("market.png")) {
+
+                } else if (imagePath.equals("training.png")) {
+
+                } else if (imagePath.equals("house.png")) {
+
+                }
+
+            }
+        });
+        panel.add(label);
     }
 
     void components() {
