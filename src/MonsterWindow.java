@@ -13,6 +13,7 @@ public class MonsterWindow extends AdvWindow implements ActionListener {
 
     static AdvPanel fight = new AdvPanel();
     static AdvPanel actions = new AdvPanel();
+    AdvPanel appearPanel = new AdvPanel();
 
     Player p;
 
@@ -35,7 +36,8 @@ public class MonsterWindow extends AdvWindow implements ActionListener {
 
         cityView.currentWindow = 3;
 
-        mainFrame.add(appear(), BorderLayout.CENTER);
+        mainFrame.add(appearPanel, BorderLayout.CENTER);
+        appear();
 
 
         mainFrame.setVisible(true);
@@ -44,8 +46,7 @@ public class MonsterWindow extends AdvWindow implements ActionListener {
 
     }
 
-    JPanel appear() {
-        JPanel appearPanel = new JPanel();
+    void appear() {
         appearPanel.setLayout(new BoxLayout(appearPanel, BoxLayout.Y_AXIS));
         JLabel appear = new JLabel("Suddenly, a " + monsterNames[monsterIndex] + " approaches...");
         appear.setFont(new Font("Old London", Font.PLAIN, 50));
@@ -63,18 +64,24 @@ public class MonsterWindow extends AdvWindow implements ActionListener {
         }
 
         appearPanel.setVisible(true);
-        return appearPanel;
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == decisionButtons[0]) { // "fight"
-            mainFrame.remove(appear());
-            appear().setVisible(false);
+            for (int i = 0; i < decisionButtons.length; i++) {
+                appearPanel.remove(decisionButtons[i]);
+
+
+            }
+            //mainFrame.remove(appearPanel);
+            appearPanel.setVisible(false);
+            System.out.println("testing");
             initiateFight();
 
         } else if (e.getSource() == decisionButtons[1]) { // "attempt to flee"
-            mainFrame.remove(appear());
-            appear().setVisible(false);
+
+            //mainFrame.remove(appearPanel);
+            appearPanel.setVisible(false);
             int chance = AdvMain.randomInt(0, 3);
             System.out.println("chance:" + chance);
             if (chance == 1) {
@@ -87,13 +94,15 @@ public class MonsterWindow extends AdvWindow implements ActionListener {
     }
 
     void initiateFight() {
+
         actions.addBorder(actions, "Actions");
         actions.setBackground(Color.white);
         //components();
 
 
         fight.setBackground(Color.GRAY);
-        mainFrame.add(fight);
+        mainFrame.add(fight, BorderLayout.CENTER);
+        System.out.println("i");
         mainFrame.add(actions, BorderLayout.AFTER_LAST_LINE);
 
 
@@ -101,6 +110,8 @@ public class MonsterWindow extends AdvWindow implements ActionListener {
 
         fight.setVisible(true);
         actions.setVisible(true);
+        //p.m.spawnMonster(monsterIndex, monsterhealthArray, monsterNames, possiblemonsterDMG_lowest, possiblemonsterDMG_highest, p);
+
     }
 
     void components() {

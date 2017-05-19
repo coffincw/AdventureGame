@@ -1,7 +1,11 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * Created by coffincw on 12/4/16.
  */
-public class MonsterAttack {
+public class MonsterAttack implements ActionListener {
 
     int temptempHealth;
     private int dealtDamage;
@@ -20,9 +24,11 @@ public class MonsterAttack {
             ifNormal(monsterdmgValue);
         }
         if (monsterdmgValue == 0) {
-            System.out.println("The " + monsterName + "'s attack missed!");
+            JLabel monsterMiss = new JLabel("The " + monsterName + "'s attack missed!");
+            MonsterWindow.fight.add(monsterMiss);
         }
-        System.out.println("The " + monsterName + " dealt " + dealtDamage + " damage! You now have " + temptempHealth + " health.");
+        JLabel monsterDMG = new JLabel("The " + monsterName + " dealt " + dealtDamage + " damage! You now have " + temptempHealth + " health.");
+        MonsterWindow.fight.add(monsterDMG);
     }
 
     private int defenseAddition(Player p) {
@@ -40,6 +46,11 @@ public class MonsterAttack {
             training.tempHeath = 0;
         }
         temptempHealth = training.tempHeath;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+
     }
 
     private void ifNormal(int monsterdmgValue) {
