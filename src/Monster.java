@@ -4,7 +4,7 @@
 public class Monster extends MonsterOrganization {
 
     void spawnMonster(int monsterIndex, int[] monsterhealthArray, String[] monsterNames, int possiblemonsterDMG_lowest, int possiblemonsterDMG_highest, Player p) {
-        System.out.println("Suddenly, a " + monsterNames[monsterIndex] + " approaches...");
+
         p_attack.attack = 0;
         while (monsterhealthArray[monsterIndex] > 0 && p.playerStats[0] > 0) {
             p_attack.playerAttack(monsterNames[monsterIndex], monsterIndex, monsterhealthArray, training, p);

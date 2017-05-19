@@ -20,12 +20,12 @@ public class GameplayWindow extends AdvWindow {
 
         System.out.println(p.city);
         System.out.println(p.playerStats[2]);
-        if (p.playerStats[2] > 2) {
-            if (AdvMain.randomInt(1, 4) == AdvMain.randomInt(1, 4)) {
-                int monsterndx = AdvMain.randomInt(0, 3);
-                p.m.spawnMonster(monsterndx, p.m.monsterHealth, p.m.MONSTER_NAMES, 10, 30, p);
-            }
-        }
+//        if (p.playerStats[2] > 2) {
+//            if (AdvMain.randomInt(1, 4) == AdvMain.randomInt(1, 4)) {
+//                int monsterndx = AdvMain.randomInt(0, 3);
+//                p.m.spawnMonster(monsterndx, p.m.monsterHealth, p.m.MONSTER_NAMES, 10, 30, p);
+//            }
+//        }
 
         switch (p.city) {
 
