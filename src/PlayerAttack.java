@@ -1,7 +1,12 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * Created by coffincw on 11/29/16.
  */
-public class PlayerAttack {
+public class PlayerAttack implements ActionListener {
 
     private boolean repeatAttack;
     private int percentHit;
@@ -12,38 +17,42 @@ public class PlayerAttack {
     private MonsterOrganization monster = new MonsterOrganization();
     private Gearset gear = new Gearset();
 
-    private final String attackMonster[] = {"neck", "eyes", "chest"};
+    private final JButton attackMonster[] = {new JButton("neck"), new JButton("eyes"), new JButton("chest")};
+
+    JButton step = new JButton("Next");
 
     private final int percentNeck[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
     private final int percentEyes[] = {0, 1, 2, 3, 4};
     private final int percentChest[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18};
 
+    Player p;
+    private int monsterIndex;
+    private int[] monsterHealth;
+    private String monsterName;
+
     void playerAttack(String monsterName, int monsterIndex, int[] monsterHealth, boolean train, Player p) {
+        this.p = p;
+        this.monsterIndex = monsterIndex;
+        this.monsterHealth = monsterHealth;
+        this.monsterName = monsterName;
+
         percentHit = AdvMain.randomInt(0, 20);
         tempDamage = 0;
         repeatAttack = true;
-        while (repeatAttack) {
-            System.out.println("Attack: ");
-            for (int a = 0; a <= attackMonster.length - 1; a++) {
-                System.out.println("(" + attackMonster[a] + ")");
-            }
-            if (train) {
-                trainingPositionOfAttack();
-            } else {
-                PositionOfAttack(monsterIndex, p);
-            }
-        }
-        monsterHealth[monsterIndex] -= tempDamage;
-        if (monsterHealth[monsterIndex] < 0) {
-            monsterHealth[monsterIndex] = 0;
-        }
-        System.out.println("You dealt " + tempDamage + " to the " + monsterName + "! the " + monsterName + " has " + monsterHealth[monsterIndex] + " health remaining.");
 
-        System.out.println(poison);
-
-        if (poison != 0) {
-            System.out.println("The " + monsterName + " was hurt by your machete's poison blade");
+        for (int a = 0; a <= attackMonster.length - 1; a++) {
+            MonsterWindow.actions.add(attackMonster[a]);
+            attackMonster[a].setAlignmentX(Component.CENTER_ALIGNMENT);
+            attackMonster[a].addActionListener(this);
+            //System.out.println("(" + attackMonster[a] + ")");
         }
+//            if (train) {
+//                trainingPositionOfAttack();
+//            } else {
+//                PositionOfAttack(monsterIndex, p);
+//            }
+
+
     }
 
     private void hitNeck(int[] percentN, int playerDamage) {
@@ -53,8 +62,7 @@ public class PlayerAttack {
             }
         }
         if (tempDamage == 0) {
-            attack += 0;
-            System.out.println("Your attack missed!");
+            MonsterWindow.fight.add(attackMissed());
         }
         attack += 1;
         repeatAttack = false;
@@ -67,8 +75,7 @@ public class PlayerAttack {
             }
         }
         if (tempDamage == 0) {
-            attack += 0;
-            System.out.println("Your attack missed!");
+            MonsterWindow.fight.add(attackMissed());
         }
         attack += 1;
         repeatAttack = false;
@@ -82,12 +89,17 @@ public class PlayerAttack {
             }
         }
         if (tempDamage == 0) {
-            attack += 0;
-            System.out.println("Your attack missed!");
+            MonsterWindow.fight.add(attackMissed());
         }
         attack += 1;
         System.out.println(poison);
         repeatAttack = false;
+    }
+
+    private JLabel attackMissed() {
+        attack += 0;
+        JLabel attackMissed = new JLabel("Your attack missed!");
+        return attackMissed;
     }
 
     private void trainingPositionOfAttack() {
@@ -103,18 +115,18 @@ public class PlayerAttack {
         }
     }
 
-    private void PositionOfAttack(int monsterIndex, Player p) {
-        String userAttack = AdvMain.readLine(">");
-        if (userAttack.equals(attackMonster[0])) {
-            hitNeck(percentNeck, attackAddition(monsterIndex, AdvMain.randomInt(20, 40), p));
-        } else if (userAttack.equals(attackMonster[1])) {
-            hitEyes(percentEyes, attackAddition(monsterIndex, AdvMain.randomInt(40, 60), p));
-        } else if (userAttack.equals(attackMonster[2])) {
-            hitChest(percentChest, attackAddition(monsterIndex, AdvMain.randomInt(10, 20), p));
-        } else {
-            System.out.println("Invalid Input");
-        }
-    }
+//    private void PositionOfAttack(int monsterIndex, Player p) {
+//        String userAttack = AdvMain.readLine(">");
+//        if (userAttack.equals(attackMonster[0])) {
+//            hitNeck(percentNeck, attackAddition(monsterIndex, AdvMain.randomInt(20, 40), p));
+//        } else if (userAttack.equals(attackMonster[1])) {
+//            hitEyes(percentEyes, attackAddition(monsterIndex, AdvMain.randomInt(40, 60), p));
+//        } else if (userAttack.equals(attackMonster[2])) {
+//            hitChest(percentChest, attackAddition(monsterIndex, AdvMain.randomInt(10, 20), p));
+//        } else {
+//            System.out.println("Invalid Input");
+//        }
+//    }
 
     private int attackAddition(int monsterIndex, int damageRange, Player p) {
         int damage = 0;
@@ -139,5 +151,47 @@ public class PlayerAttack {
         return poison;
     }
 
+    void dealDamage() {
+        monsterHealth[monsterIndex] -= tempDamage;
+        if (monsterHealth[monsterIndex] < 0) {
+            monsterHealth[monsterIndex] = 0;
+        }
+        MonsterWindow.fight.add(new JLabel("You dealt " + tempDamage + " to the " + monsterName + "! the " + monsterName + " has " + monsterHealth[monsterIndex] + " health remaining."));
 
+        System.out.println(poison);
+
+        if (poison != 0) {
+            MonsterWindow.fight.add(new JLabel("The " + monsterName + " was hurt by your machete's poison blade"));
+        }
+        for (int i = 0; i < attackMonster.length; i++) {
+            MonsterWindow.actions.remove(attackMonster[i]);
+        }
+
+        MonsterWindow.actions.add(step);
+        step.setAlignmentX(Component.CENTER_ALIGNMENT);
+        step.addActionListener(this);
+
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+
+        if (actionEvent.getSource() == attackMonster[0]) {
+            hitNeck(percentNeck, attackAddition(monsterIndex, AdvMain.randomInt(20, 40), p));
+            dealDamage();
+        } else if (actionEvent.getSource() == attackMonster[1]) {
+            hitEyes(percentEyes, attackAddition(monsterIndex, AdvMain.randomInt(40, 60), p));
+            dealDamage();
+        } else if (actionEvent.getSource() == attackMonster[2]) {
+            hitChest(percentChest, attackAddition(monsterIndex, AdvMain.randomInt(10, 20), p));
+            dealDamage();
+        } else if (actionEvent.getSource() == step) {
+            MonsterWindow.mainFrame.remove(MonsterWindow.actions);
+            MonsterWindow.mainFrame.remove(MonsterWindow.fight);
+            MonsterWindow.actions.setVisible(false);
+            MonsterWindow.fight.setVisible(false);
+            //left off here
+        }
+    }
 }
