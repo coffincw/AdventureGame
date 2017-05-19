@@ -170,13 +170,8 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
             sidebar.setVisible(false);
             actions.setVisible(false);
             capitalLocations.setVisible(false);
-
-//            for (int i = 0 ; i < locationButtons.length ; i++) {
-//                capitalLocations.remove(locationButtons[i]);
-//            }
             p.city = "jex";
-            JexWindow jex = new JexWindow(p);
-
+            GameplayWindow game = new GameplayWindow(p);
         } else if (e.getSource() == locationButtons[1]) { // "Lana"
             mainFrame.remove(sidebar);
             mainFrame.remove(actions);
@@ -187,7 +182,7 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
             actions.setVisible(false);
             capitalLocations.setVisible(false);
             p.city = "lana";
-            LanaWindow lana = new LanaWindow(p);
+            GameplayWindow game = new GameplayWindow(p);
 
 
         } else if (e.getSource() == locationButtons[2] || e.getSource() == locationButtons[3]) { // "Back to Town"

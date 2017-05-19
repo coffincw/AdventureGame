@@ -153,7 +153,7 @@ public class JexWindow extends AdvWindow implements ActionListener {
 //            }
 
             p.city = "capital";
-            CapitalWindow capital = new CapitalWindow(p);
+            GameplayWindow game = new GameplayWindow(p);
 
         } else if (e.getSource() == changeButtons[1] || e.getSource() == changeButtons[2]) { // "Back to Town"
             p.city = "jex";

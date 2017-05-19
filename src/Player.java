@@ -33,6 +33,7 @@ public class Player {
     int additionalDefense[] = {0, 0, 0, 0};
 
     static Gearset gear = new Gearset();
+    Monster m = new Monster();
 
     String Stats() { // displays statistics
         return "Miles Traveled: " + playerStats[2] +

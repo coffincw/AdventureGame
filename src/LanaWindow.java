@@ -157,7 +157,7 @@ public class LanaWindow extends AdvWindow implements ActionListener {
 //            }
 
             p.city = "capital";
-            CapitalWindow capital = new CapitalWindow(p);
+            GameplayWindow game = new GameplayWindow(p);
 
         } else if (e.getSource() == changeButtons[1] || e.getSource() == changeButtons[2]) { // "Back to Town"
             p.city = "lana";
@@ -189,7 +189,7 @@ public class LanaWindow extends AdvWindow implements ActionListener {
         mainFrame.add(locationPanel, BorderLayout.AFTER_LAST_LINE);
         locationPanel.addBorder(locationPanel, "Locations");
 
-        for (int i = 0; i < changeButtons.length; i++) {
+        for (int i = 0; i < changeButtons.length - 1; i++) {
             locationPanel.add(changeButtons[i]);
             changeButtons[i].setAlignmentX(Component.CENTER_ALIGNMENT);
             changeButtons[i].addActionListener(this);
