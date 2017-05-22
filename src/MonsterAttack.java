@@ -25,10 +25,10 @@ public class MonsterAttack implements ActionListener {
         }
         if (monsterdmgValue == 0) {
             JLabel monsterMiss = new JLabel("The " + monsterName + "'s attack missed!");
-            MonsterWindow.fight.add(monsterMiss);
+            //fight.add(monsterMiss);
         }
         JLabel monsterDMG = new JLabel("The " + monsterName + " dealt " + dealtDamage + " damage! You now have " + temptempHealth + " health.");
-        MonsterWindow.fight.add(monsterDMG);
+        //MonsterWindow.fight.add(monsterDMG);
     }
 
     private int defenseAddition(Player p) {

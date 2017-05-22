@@ -11,8 +11,7 @@ import java.awt.event.MouseEvent;
  */
 public class MonsterWindow extends AdvWindow implements ActionListener {
 
-    static AdvPanel fight = new AdvPanel();
-    static AdvPanel actions = new AdvPanel();
+
     AdvPanel appearPanel = new AdvPanel();
 
     Player p;
@@ -95,22 +94,6 @@ public class MonsterWindow extends AdvWindow implements ActionListener {
 
     void initiateFight() {
 
-        actions.addBorder(actions, "Actions");
-        actions.setBackground(Color.white);
-        //components();
-
-
-        fight.setBackground(Color.GRAY);
-        mainFrame.add(fight, BorderLayout.CENTER);
-        System.out.println("i");
-        mainFrame.add(actions, BorderLayout.AFTER_LAST_LINE);
-
-
-        //setting viewable
-
-        fight.setVisible(true);
-        actions.setVisible(true);
-        //p.m.spawnMonster(monsterIndex, monsterhealthArray, monsterNames, possiblemonsterDMG_lowest, possiblemonsterDMG_highest, p);
 
     }
 

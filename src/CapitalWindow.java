@@ -89,7 +89,7 @@ public class CapitalWindow extends AdvWindow implements ActionListener {
                     actions.setVisible(false);
                     capitalLocations.setVisible(false);
                     capitalSites.setVisible(false);
-                    MonsterWindow monster = new MonsterWindow(2, p.m.monsterHealth, p.m.MONSTER_NAMES, 10, 30, p);
+                    //MonsterWindow monster = new MonsterWindow(2, p.m.monsterHealth, p.m.MONSTER_NAMES, 10, 30, p);
                 } else if (imagePath.equals("house.png")) {
 
                 } else if (imagePath.equals("house(1).png")) {
