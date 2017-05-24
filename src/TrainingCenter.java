@@ -71,7 +71,7 @@ public class TrainingCenter extends BuildingElement {
     void spawnTrainingMonster(int monsterIndex, Player p) {
         System.out.println("A " + Monster[monsterIndex] + " approaches...");
         while (trainingMH[monsterIndex] > 0 && tempHeath > 0) {
-            p_attack.playerAttack(Monster[monsterIndex], monsterIndex, trainingMH, training, p);
+            //p_attack.playerAttack(Monster[monsterIndex], monsterIndex, trainingMH, training, p);
             if (trainingMH[monsterIndex] > 0) {
                 m_attack.mAttack(Monster[monsterIndex], AdvMain.randomInt(monsterDMGLOW[monsterIndex], monsterDMGHIGH[monsterIndex]), monstercheck);
             }
