@@ -10,7 +10,7 @@ Player class which holds the inventory, maps, statistics, score and highscore ca
 public class Player {
 
     // Health Potions, Pebbles, coins
-    int items[] = {0, 0, 0}; // split into arrays: health potions, ammo, currency?
+    int items[] = {0, 0, 30}; // split into arrays: health potions, ammo, currency?
 
     static String city;
 
