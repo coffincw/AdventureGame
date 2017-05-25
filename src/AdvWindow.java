@@ -7,7 +7,6 @@ import java.awt.event.*;
  */
 public class AdvWindow extends JFrame {
     static JFrame mainFrame = null;
-    static AdvMap map = null;
 
     AdvPanel cityView = new AdvPanel();
     //AdvPanel cityTitle = new AdvPanel();
@@ -31,7 +30,6 @@ public class AdvWindow extends JFrame {
 
         if (mainFrame == null) {
             mainFrame = new JFrame();
-            map = new AdvMap();
         }
 
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

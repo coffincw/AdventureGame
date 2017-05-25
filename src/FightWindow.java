@@ -24,7 +24,6 @@ public class FightWindow extends AdvWindow implements ActionListener {
     int attack;
     private int poison;
 
-    private MonsterOrganization monster = new MonsterOrganization();
     private Gearset gear = new Gearset();
 
     JButton step[] = {new JButton("Next"), new JButton("Next"), new JButton("Next")};
