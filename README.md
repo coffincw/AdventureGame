@@ -21,7 +21,7 @@ Each city has a unique layout of buildings.  There are a variety of different bu
 
 Here is an a one of the buildings you can explore in a city
 
-![bank] (bank.png)
+![bank](https://imgur.com/GzYne0c.png)
 
 
 
