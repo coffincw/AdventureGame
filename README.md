@@ -21,7 +21,7 @@ Below you can see an image of a sample backpack
 
 
 ### Traveling
-If a player has finished exploring the city they are currently in they may travel to the surrounding cities with a click of a button.  The player has to be careful when they travel as they might run into monsters along their way.  If the player is curious about where they can go from any given city they can view their map on the side of the screen
+If a player has finished exploring the city they are currently in they may travel to the surrounding cities with a click of a button.  The player has to be careful when they travel as they might run into monsters along their way.  If the player is curious about where they can go from any given city they can view their map on the side of the screen.
 
 Below you can see what the map looks like
 
